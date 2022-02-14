@@ -72,7 +72,7 @@
                             <span class="font-base">{{__('Already have an account?')}}</span>
                             <a
                                 class="text-sm font-medium text-primary-600 hover:underline"
-                                href="{{ route('userlogin ') }}">
+                                href="{{ route('userlogin') }}">
                                 {{__('Login')}}
                             </a>
                         </p>
