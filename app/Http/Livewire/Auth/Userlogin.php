@@ -43,7 +43,7 @@ class Userlogin extends BaseLivewireComponent
             return;
         }
 
-        if (Hash::check($this->password, $user->password) && Auth::attempt(['email'=>$this->email, 'password' => $this->password], $this->remember)) {
+        if (Hash::check($this->password, $user->password) && Auth::attempt(['phone'=>$number, 'password' => $this->password], $this->remember)) {
             //
             $user->syncFCMToken($this->fcmToken);
             return redirect()->route('dashboard');

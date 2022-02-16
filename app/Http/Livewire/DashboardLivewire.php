@@ -10,7 +10,7 @@ use Asantibanez\LivewireCharts\Models\LineChartModel;
 use Carbon\Carbon;
 use Numbers\Number;
 use Livewire\Component;
-
+use Auth;
 
 class DashboardLivewire extends Component
 {
@@ -21,7 +21,8 @@ class DashboardLivewire extends Component
         if ($user->hasRole('admin')) {
             $totalOrders = Number::n(Order::mine()->count())->round(3)->getSuffixNotation();
             // $totalEarnings = Number::n(Order::mine()->sum('total'))->round(3)->getSuffixNotation();
-        }else if($user->hasRole('client')){
+        }
+        else if($user->hasRole('client')){
             $totalOrders = Number::n(Order::where('user_id',$user->id)->count())->round(3)->getSuffixNotation();
         } 
         
