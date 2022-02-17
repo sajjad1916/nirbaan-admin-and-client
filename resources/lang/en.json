@@ -160,7 +160,6 @@
     "Wallet Balance": "Wallet Balance",
     "Note": "Note",
     "Payment Method": "Payment Method",
-    "Earning": "Earning",
     "Amount": "Amount",
     "Create Menu": "Create Menu",
     "Update Menu": "Update Menu",
@@ -430,7 +429,7 @@
     "Total Orders": "Total Orders",
     "Vendors This Year": "Vendors This Year",
     "Users This Week": "Users This Week",
-    "Total Earning": "Total Earning",
+
     "Delivery address": "Delivery address",
     "Data imported successfully!": "Data imported successfully!",
     "Data import failed!": "Data import failed!",
@@ -513,7 +512,7 @@
     "Auto Cancel Pending Order Time": "Auto Cancel Pending Order Time",
     "Order could not be found": "Order could not be found",
     "Order has already been": "Order has already been",
-    "Vendor Earning Enable(irrespective of the payment method used)": "Vendor Earning Enable(irrespective of the payment method used)",
+  
     "SMS Gateways": "SMS Gateways",
     "New Order Alert": "New Order Alert",
     "Pickup Location": "Pickup Location",

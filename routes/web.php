@@ -32,23 +32,19 @@ use App\Http\Livewire\Payment\OrderPaymentCallbackLivewire;
 
 use App\Http\Livewire\PackageTypeLivewire;
 use App\Http\Livewire\PackageTypePricingLivewire;
-// use App\Http\Livewire\CountryLivewire;
-// use App\Http\Livewire\StateLivewire;
-// use App\Http\Livewire\CitiesLivewire;
+
 
 
 use App\Http\Livewire\UserLivewire;
 use App\Http\Livewire\DriverLivewire;
-use App\Http\Livewire\DriverEarningLivewire;
-use App\Http\Livewire\DriverRemittanceLivewire;
-use App\Http\Livewire\VendorEarningLivewire;
-use App\Http\Livewire\PayoutLivewire;
+
+
 
 
 use App\Http\Livewire\NotificationLivewire;
 use App\Http\Livewire\SMSGatewayLivewire;
 use App\Http\Livewire\CronJobLivewire;
-use App\Http\Livewire\AutoAssignmentLivewire;
+
 
 use App\Http\Livewire\Payment\WalletTopUpLivewire;
 use App\Http\Livewire\Payment\WalletTopUpCallbackLivewire;
@@ -113,9 +109,7 @@ Route::group(['middleware' => ['web']], function () {
         Route::get('vendors', VendorLivewire::class)->name('vendors');
 
         //admin/manager routes
-        Route::get('earnings/drivers', DriverEarningLivewire::class)->name('earnings.drivers');
-        Route::get('earnings/remittance', DriverRemittanceLivewire::class)->name('earnings.remittance');
-        Route::get('payouts', PayoutLivewire::class)->name('payouts');
+    
 
 
         //admin routes
@@ -123,7 +117,6 @@ Route::group(['middleware' => ['web']], function () {
 
             //
             Route::get('operations/cron/job', CronJobLivewire::class)->name('configure.cron.job');
-            Route::get('operations/order/assignment', AutoAssignmentLivewire::class)->name('auto.assignments');
             Route::get('reviews', ReviewLivewire::class)->name('reviews');
             
             Route::get('wallet/transactions', WalletTransactionLivewire::class)->name('wallet.transactions');
@@ -138,14 +131,9 @@ Route::group(['middleware' => ['web']], function () {
             
             //package
             Route::get('package/types', PackageTypeLivewire::class)->name('package.types');
-            // Route::get('package/countries', CountryLivewire::class)->name('package.countries');
-            // Route::get('package/states', StateLivewire::class)->name('package.states');
-            // Route::get('package/cities', CitiesLivewire::class)->name('package.cities');
             
             
-            //imports
-            Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index')->name('logs');
-            
+           
 
             //settings
             Route::get('setting/sms/gateways', SMSGatewayLivewire::class)->name('sms.settings');
@@ -155,7 +143,6 @@ Route::group(['middleware' => ['web']], function () {
             
             Route::get('users', UserLivewire::class)->name('users');
             
-            Route::get('earnings/vendors', VendorEarningLivewire::class)->name('earnings.vendors');
         });
 
         //manager routes

@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Tables;
 
 use App\Models\OrderProduct;
 use App\Models\OrderService;
-use App\Models\OrderStop;
 use App\Models\Vendor;
 use Rappasoft\LaravelLivewireTables\DataTableComponent;
 use Rappasoft\LaravelLivewireTables\Views\Column;
@@ -60,9 +59,7 @@ class VendorTable extends BaseDataTableComponent
             OrderProduct::whereIn('order_id', [$orderIds])->delete();
             //order_services
             OrderService::whereIn('order_id', [$orderIds])->delete();
-            //order_stops
-            OrderStop::whereIn('order_id', [$orderIds])->delete();
-            //delete orders placed with that vendor
+
             Order::whereIn('vendor_id', [$this->selectedModel->id])->delete();
             //
             $this->selectedModel = $this->selectedModel->fresh();

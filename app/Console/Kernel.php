@@ -24,13 +24,7 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-        $schedule->command('order:dispatch')->everyTenMinutes();
-        $schedule->command('order:cancel')->everyMinute();
-        $schedule->command('order:manage')->everySixHours();
-        $schedule->command('order:assign')->everyMinute();
-        $schedule->command('order:auto_assignment_cancel')->everyMinute();
-        $schedule->command('subscription:manage')->hourly();
+      
     }
 
     /**

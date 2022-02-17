@@ -11,10 +11,7 @@
                     <x-heroicon-s-shopping-bag class="w-16 text-primary-600" />
                 </x-dashboard-card>
 
-                {{-- Earning --}}
-                {{-- <x-dashboard-card bg="bg-blue-100" title="{{ __('TOTAL EARNINGS') }}" value="{{ setting('currency') }} {{ $totalEarnings }}">
-                    <x-heroicon-s-cash class="w-16 text-primary-600" />
-                </x-dashboard-card> --}}
+               
                 @role('admin')
                 {{-- Total Vendors --}}
                 <x-dashboard-card bg="bg-red-100" title="{{ __('TOTAL VENDORS') }}" value="{{ $totalVendors }}">
@@ -31,10 +28,7 @@
             {{-- Charts --}}
             <div class="grid gap-6 mt-10 mb-20 lg:grid-cols-2">
 
-                {{-- Earning --}}
-                <x-dashboard-chart>
-                    <livewire:livewire-line-chart :line-chart-model="$earningChart" />
-                </x-dashboard-chart>
+             
                 @role('admin')
                 {{-- Users --}}
                 <x-dashboard-chart>

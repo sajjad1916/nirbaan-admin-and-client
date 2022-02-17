@@ -87,43 +87,7 @@
         </x-menu-item>
 
     @endhasanyrole
-    @hasanyrole('city-admin|admin')
-    {{-- Earings --}}
-    <x-group-menu-item routePath="earnings/*" title="{{ __('Earnings') }}" icon="heroicon-o-cash">
-        
-            <x-menu-item title="{{ __('Vendor Earnings') }}" route="earnings.vendors">
-                <x-heroicon-o-shopping-bag class="w-5 h-5" />
-            </x-menu-item>
-        
 
-        <x-menu-item title="{{ __('Driver Earnings') }}" route="earnings.drivers">
-            <x-heroicon-o-truck class="w-5 h-5" />
-        </x-menu-item>
-
-        <x-menu-item title="{{ __('Driver Remittance') }}" route="earnings.remittance">
-            <x-heroicon-o-calculator class="w-5 h-5" />
-        </x-menu-item>
-
-    </x-group-menu-item>
-    @endhasanyrole
-
-    @hasanyrole('city-admin|admin')
-    {{-- Payouts --}}
-    <x-group-menu-item routePath="payouts*" title="{{ __('Payouts') }}"
-        icon="heroicon-o-clipboard-check">
-        
-            <x-menu-item title="{{ __('Vendor Payouts') }}" route="payouts"
-                rawRoute="{{ route('payouts', ['type' => 'vendors']) }}">
-                <x-heroicon-o-shopping-bag class="w-5 h-5" />
-            </x-menu-item>
-        
-        <x-menu-item title="{{ __('Driver Payouts') }}" route="payouts"
-            rawRoute="{{ route('payouts', ['type' => 'drivers']) }}">
-            <x-heroicon-o-truck class="w-5 h-5" />
-        </x-menu-item>
-
-    </x-group-menu-item>
-    @endhasanyrole
 
     {{-- Payment methods --}}
     @hasanyrole('manager')
@@ -140,21 +104,12 @@
         </x-menu-item>
         <x-group-menu-item routePath="operations/*" title="{{ __('Operations') }}"
             icon="heroicon-o-server">
-
-           
-            {{-- logs --}}
-            <x-menu-item title="{{ __('Logs') }}" route="logs" ex="true">
-                <x-heroicon-o-shield-exclamation class="w-5 h-5" />
-            </x-menu-item>
             
             {{-- cron job --}}
             <x-menu-item title="{{ __('CRON JOB') }}" route="configure.cron.job">
                 <x-heroicon-o-calendar class="w-5 h-5" />
             </x-menu-item>
-            {{-- cron job --}}
-            <x-menu-item title="{{ __('Auto-Assignments') }}" route="auto.assignments">
-                <x-heroicon-o-clipboard-check class="w-5 h-5" />
-            </x-menu-item>
+           
 
         </x-group-menu-item>
 

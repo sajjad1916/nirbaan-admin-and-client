@@ -57,7 +57,6 @@
         "orangehill/iseed": "^3.0",
         "ozdemirburak/iris": "^2.3",
         "propaganistas/laravel-phone": "^4.3",
-        "rap2hpoutre/laravel-log-viewer": "^1.7",
         "rappasoft/laravel-livewire-tables": "^1.11",
         "spatie/laravel-medialibrary": "^8.0.0",
         "spatie/laravel-model-status": "^1.10",

@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Earning;
 use App\Models\Vendor;
 use App\Models\Order;
 use App\Models\User;
@@ -34,44 +33,13 @@ class DashboardLivewire extends Component
             "totalVendors" => $totalVendors,
             "totalClients" => $totalClients,
 
-            "earningChart" => $this->earningChart(),
+            // "earningChart" => $this->earningChart(),
             "usersChart" => $this->usersChart(),
             "vendorsChart" => $this->vendorsChart(),
             "ordersChart" => $this->ordersChart(),
         ]);
     }
 
-
-
-
-    public function earningChart()
-    {
-
-        //
-        $chart = (new LineChartModel())->setTitle(__('Total Earning') . ' (' . Date("Y") . ')')->withoutLegend();
-        $user = User::find(\Auth::id());
-
-        for ($loop = 0; $loop < 12; $loop++) {
-            $date = Carbon::now()->firstOfYear()->addMonths($loop);
-            $formattedDate = $date->format("M");
-            if (empty($user->vendor_id)) {
-                $data = Order::mine()->whereMonth("created_at", $date)->sum('total');
-            } else {
-                $data = Earning::where("vendor_id", $user->vendor_id)->whereMonth("created_at", $date)->sum('amount');
-            }
-            $data = number_format($data, 2, ".", ",");
-
-            //
-            $chart->addPoint(
-                $formattedDate,
-                $data,
-                $this->genColor(),
-            );
-        }
-
-
-        return $chart;
-    }
 
     public function usersChart()
     {

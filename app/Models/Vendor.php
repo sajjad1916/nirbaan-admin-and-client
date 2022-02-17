@@ -188,10 +188,7 @@ class Vendor extends BaseModel
         return $this->belongsTo('App\Models\VendorType', 'vendor_type_id', 'id');
     }
 
-    public function earning()
-    {
-        return $this->hasOne('App\Models\Earning', 'vendor_id', 'id');
-    }
+
 
     public function managers()
     {
@@ -204,26 +201,6 @@ class Vendor extends BaseModel
     }
 
 
-    // public function days()
-    // {
-    //     return $this->belongsToMany('App\Models\Day')->withPivot('id', 'day_id', 'open', 'close');
-    // }
-
-
-
-
-    // public function cities()
-    // {
-    //     return $this->belongsToMany('App\Models\City');
-    // }
-    // public function states()
-    // {
-    //     return $this->belongsToMany('App\Models\State');
-    // }
-    // public function countries()
-    // {
-    //     return $this->belongsToMany('App\Models\Country');
-    // }
 
     public function payment_methods()
     {
@@ -237,20 +214,6 @@ class Vendor extends BaseModel
         return $this->hasMany('App\Models\PackageTypePricing', 'vendor_id', 'id');
     }
 
-    // public function openToday()
-    // {
-    //     $now = Carbon::now();
-    //     $todayName = $now->format('l');
-    //     return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->where('name', $todayName);
-    // }
-
-    // public function openNow()
-    // {
-    //     $now = Carbon::now();
-    //     $nowTime = $now->format('H:i:s');
-    //     $todayName = $now->format('l');
-    //     return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->whereTime('open', '<=', $nowTime)->whereTime('close', '>', $nowTime)->where('name', $todayName);
-    // }
 
     public function getHasSubscriptionAttribute()
     {

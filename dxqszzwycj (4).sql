@@ -7,21 +7,6 @@ SET sql_mode = 'NO_AUTO_VALUE_ON_ZERO';
 
 SET NAMES utf8mb4;
 
-DROP TABLE IF EXISTS `auto_assignments`;
-CREATE TABLE `auto_assignments` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `order_id` bigint(20) unsigned NOT NULL,
-  `driver_id` bigint(20) unsigned NOT NULL,
-  `status` enum('pending','rejected') COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'pending',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `auto_assignments_order_id_foreign` (`order_id`),
-  KEY `auto_assignments_driver_id_foreign` (`driver_id`),
-  CONSTRAINT `auto_assignments_driver_id_foreign` FOREIGN KEY (`driver_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `auto_assignments_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 
 DROP TABLE IF EXISTS `coupons`;
 CREATE TABLE `coupons` (
@@ -82,20 +67,6 @@ INSERT INTO `coupon_user` (`id`, `coupon_id`, `user_id`, `order_id`) VALUES
 (18,	2,	116,	203),
 (19,	2,	116,	211);
 
-DROP TABLE IF EXISTS `coupon_vendor`;
-CREATE TABLE `coupon_vendor` (
-  `coupon_id` bigint(20) unsigned NOT NULL,
-  `vendor_id` bigint(20) unsigned NOT NULL,
-  PRIMARY KEY (`coupon_id`,`vendor_id`),
-  KEY `coupon_vendor_coupon_id_index` (`coupon_id`),
-  KEY `coupon_vendor_vendor_id_index` (`vendor_id`),
-  CONSTRAINT `coupon_vendor_coupon_id_foreign` FOREIGN KEY (`coupon_id`) REFERENCES `coupons` (`id`) ON DELETE CASCADE,
-  CONSTRAINT `coupon_vendor_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `coupon_vendor` (`coupon_id`, `vendor_id`) VALUES
-(1,	1),
-(2,	1);
 
 DROP TABLE IF EXISTS `currencies`;
 CREATE TABLE `currencies` (
@@ -634,57 +605,6 @@ INSERT INTO `deliveryZone` (`id`, `name`, `created_at`, `updated_at`, `deleted_a
 (508,	'Zinzira',	'2021-11-16 20:21:21',	'0000-00-00 00:00:00',	NULL),
 (509,	'Zoo',	'2021-11-16 20:21:27',	'0000-00-00 00:00:00',	NULL);
 
-DROP TABLE IF EXISTS `delivery_addresses`;
-CREATE TABLE `delivery_addresses` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `phone` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `address` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `is_default` tinyint(1) NOT NULL DEFAULT '0',
-  `user_id` bigint(20) unsigned NOT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `delivery_addresses_user_id_foreign` (`user_id`),
-  CONSTRAINT `delivery_addresses_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-
-DROP TABLE IF EXISTS `earnings`;
-CREATE TABLE `earnings` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `amount` double(10,2) NOT NULL,
-  `user_id` bigint(20) unsigned DEFAULT NULL,
-  `vendor_id` bigint(20) unsigned DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `earnings_user_id_foreign` (`user_id`),
-  KEY `earnings_vendor_id_foreign` (`vendor_id`),
-  CONSTRAINT `earnings_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
-  CONSTRAINT `earnings_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `earnings` (`id`, `amount`, `user_id`, `vendor_id`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1,	0.00,	NULL,	1,	'2021-11-01 17:14:12',	'2021-11-01 17:14:12',	NULL),
-(2,	0.00,	81,	NULL,	'2021-11-24 11:57:48',	'2021-11-24 11:57:48',	NULL);
-
-DROP TABLE IF EXISTS `extensions`;
-CREATE TABLE `extensions` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci,
-  `action` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `icon` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `component` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `is_active` tinyint(1) NOT NULL DEFAULT '1',
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -768,8 +688,6 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (25,	'2021_01_31_220207_create_coupon_vendor_pivot_table',	1),
 (26,	'2021_02_22_083407_create_currencies_table',	1),
 (27,	'2021_02_22_093956_create_payments_table',	1),
-(29,	'2021_03_09_135459_create_earnings_table',	1),
-(30,	'2021_03_09_135627_create_payouts_table',	1),
 (31,	'2021_03_13_004008_create_reviews_table',	1),
 (32,	'2021_03_13_011402_create_ratings_table',	1),
 (36,	'2021_03_30_145240_create_user_tokens_table',	1),
@@ -1259,23 +1177,6 @@ INSERT INTO `orders` (`id`, `code`, `verification_code`, `note`, `reason`, `stat
 (292,	'Ir7lK5KAEW',	'HHmBE',	'',	'Long pickup time',	'pending',	'pending',	0.00,	0.00,	60.00,	0.00,	0.00,	570.00,	NULL,	'0000-00-00',	'00:00:00',	1,	1.00,	630.00,	'Mawtail madicel',	'None',	'Dhaka keraniganj aminpara',	'apon',	'11:00 AM',	'February 16, 2022',	'01771827988',	'ভঙ্গুর',	2,	1,	71,	NULL,	'2022-02-16 11:08:46',	'2022-02-16 11:21:15',	NULL),
 (293,	'YWnHdU6llt',	'O1bTm',	'',	NULL,	'pending',	'pending',	0.00,	0.00,	60.00,	0.00,	0.00,	0.00,	NULL,	'0000-00-00',	'00:00:00',	1,	0.80,	60.00,	'Flat-D8,House#119,Vartex Hasina palace rayer bazer high school west Dhanmondi Dhaka',	'Khilgao',	'278, road no- 9, goran, khilgao\nModinaoshjid er ektu samne',	'Rumki',	'4:23 PM',	'February 16, 2022',	'01911135430',	'None',	1,	1,	164,	NULL,	'2022-02-16 15:13:35',	'2022-02-16 15:13:35',	NULL);
 
-DROP TABLE IF EXISTS `order_stops`;
-CREATE TABLE `order_stops` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `is_first` tinyint(1) NOT NULL DEFAULT '0',
-  `price` double(8,2) NOT NULL DEFAULT '0.00',
-  `order_id` bigint(20) unsigned NOT NULL,
-  `stop_id` bigint(20) unsigned DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `order_stops_order_id_foreign` (`order_id`),
-  KEY `order_stops_stop_id_foreign` (`stop_id`),
-  CONSTRAINT `order_stops_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`),
-  CONSTRAINT `order_stops_stop_id_foreign` FOREIGN KEY (`stop_id`) REFERENCES `delivery_addresses` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
 
 DROP TABLE IF EXISTS `otps`;
 CREATE TABLE `otps` (
@@ -1398,26 +1299,6 @@ CREATE TABLE `payment_method_vendor` (
   CONSTRAINT `payment_method_vendor_vendor_id_foreign` FOREIGN KEY (`vendor_id`) REFERENCES `vendors` (`id`) ON DELETE CASCADE
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-
-DROP TABLE IF EXISTS `payouts`;
-CREATE TABLE `payouts` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `amount` double(10,2) NOT NULL,
-  `earning_id` bigint(20) unsigned NOT NULL,
-  `user_id` bigint(20) unsigned NOT NULL,
-  `payment_method_id` bigint(20) unsigned NOT NULL,
-  `note` text COLLATE utf8mb4_unicode_ci,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `payouts_earning_id_foreign` (`earning_id`),
-  KEY `payouts_user_id_foreign` (`user_id`),
-  KEY `payouts_payment_method_id_foreign` (`payment_method_id`),
-  CONSTRAINT `payouts_earning_id_foreign` FOREIGN KEY (`earning_id`) REFERENCES `earnings` (`id`),
-  CONSTRAINT `payouts_payment_method_id_foreign` FOREIGN KEY (`payment_method_id`) REFERENCES `payment_methods` (`id`),
-  CONSTRAINT `payouts_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
 DROP TABLE IF EXISTS `permissions`;

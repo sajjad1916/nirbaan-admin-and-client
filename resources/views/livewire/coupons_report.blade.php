@@ -15,10 +15,7 @@
                 <livewire:livewire-pie-chart :pie-chart-model="$topUsersChart" />
             </x-dashboard-chart>
 
-            {{-- Earning --}}
-            {{-- <x-dashboard-card bg="bg-blue-100" title="{{ __('TOTAL EARNINGS') }}" value="{{ setting('currency') }} {{ $totalEarnings }}">
-                <x-heroicon-s-cash class="w-16 text-primary-600" />
-            </x-dashboard-card> --}}
+         
             
         </div>
     </x-baseview>
