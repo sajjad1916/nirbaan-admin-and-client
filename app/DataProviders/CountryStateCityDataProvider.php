@@ -4,14 +4,14 @@ namespace App\DataProviders;
 
 abstract class CountryStateCityDataProvider
 {
-    public static function Countries()
-    {
-        return [
+    // public static function Countries()
+    // {
+    //     return [
           
-            ['id' => '18', 'name' => 'bangladesh']
+    //         ['id' => '18', 'name' => 'bangladesh']
             
-        ];
-    }
+    //     ];
+    // }
 
     public static function States()
     {

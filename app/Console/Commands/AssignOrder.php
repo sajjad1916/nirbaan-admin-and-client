@@ -150,9 +150,9 @@ class AssignOrder extends Command
                             'lat' => $pickupLocationLat,
                             'long' => $pickupLocationLng,
                             'address' => $order->type != "parcel" ? $order->vendor->address : $order->pickup_location->address,
-                            'city' => $order->type != "parcel" ? "" : $order->pickup_location->city,
-                            'state' => $order->type != "parcel" ? "" : $order->pickup_location->state ?? "",
-                            'country' => $order->type != "parcel" ? "" : $order->pickup_location->country ?? "",
+                            // 'city' => $order->type != "parcel" ? "" : $order->pickup_location->city,
+                            // 'state' => $order->type != "parcel" ? "" : $order->pickup_location->state ?? "",
+                            // 'country' => $order->type != "parcel" ? "" : $order->pickup_location->country ?? "",
                             "distance" => number_format($driverDistanceToPickup, 2),
                         ];
 
@@ -175,9 +175,9 @@ class AssignOrder extends Command
                             'lat' => $dropoffLocationLat,
                             'long' => $dropoffLocationLng,
                             'address' => $order->type != "parcel" ? $order->delivery_address->address : $order->dropoff_location->address,
-                            'city' => $order->type != "parcel" ? "" : $order->dropoff_location->city,
-                            'state' => $order->type != "parcel" ? "" : $order->pickup_location->state ?? "",
-                            'country' => $order->type != "parcel" ? "" : $order->pickup_location->country ?? "",
+                            // 'city' => $order->type != "parcel" ? "" : $order->dropoff_location->city,
+                            // 'state' => $order->type != "parcel" ? "" : $order->pickup_location->state ?? "",
+                            // 'country' => $order->type != "parcel" ? "" : $order->pickup_location->country ?? "",
                             "distance" => number_format($driverDistanceToDropoff, 2),
                         ];
                         //

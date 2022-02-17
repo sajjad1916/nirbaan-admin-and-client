@@ -32,9 +32,9 @@ use App\Http\Livewire\Payment\OrderPaymentCallbackLivewire;
 
 use App\Http\Livewire\PackageTypeLivewire;
 use App\Http\Livewire\PackageTypePricingLivewire;
-use App\Http\Livewire\CountryLivewire;
-use App\Http\Livewire\StateLivewire;
-use App\Http\Livewire\CitiesLivewire;
+// use App\Http\Livewire\CountryLivewire;
+// use App\Http\Livewire\StateLivewire;
+// use App\Http\Livewire\CitiesLivewire;
 
 
 use App\Http\Livewire\UserLivewire;
@@ -138,9 +138,9 @@ Route::group(['middleware' => ['web']], function () {
             
             //package
             Route::get('package/types', PackageTypeLivewire::class)->name('package.types');
-            Route::get('package/countries', CountryLivewire::class)->name('package.countries');
-            Route::get('package/states', StateLivewire::class)->name('package.states');
-            Route::get('package/cities', CitiesLivewire::class)->name('package.cities');
+            // Route::get('package/countries', CountryLivewire::class)->name('package.countries');
+            // Route::get('package/states', StateLivewire::class)->name('package.states');
+            // Route::get('package/cities', CitiesLivewire::class)->name('package.cities');
             
             
             //imports

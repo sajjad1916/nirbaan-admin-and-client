@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 // use App\Models\Category;
 use App\Models\Vendor;
 use App\Models\User;
-use App\Models\Day;
+// use App\Models\Day;
 use App\Models\VendorType;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -371,122 +371,122 @@ class VendorLivewire extends BaseLivewireComponent
 
 
     //CUSTOM DAYS
-    public function changeVendorTiming($id)
-    {
-        $this->selectedModel = $this->model::find($id);
-        $this->days = Day::get();
-        $vendorDays = $this->selectedModel->days;
-        foreach ($vendorDays as $vendorDay) {
-            $this->workingDays[] = $vendorDay;
-            $this->dayOpen[$vendorDay->pivot->id] = $vendorDay->pivot->open;
-            $this->dayClose[$vendorDay->pivot->id] = $vendorDay->pivot->close;
-        }
+    // public function changeVendorTiming($id)
+    // {
+    //     $this->selectedModel = $this->model::find($id);
+    //     // $this->days = Day::get();
+    //     // $vendorDays = $this->selectedModel->days;
+    //     // foreach ($vendorDays as $vendorDay) {
+    //     //     $this->workingDays[] = $vendorDay;
+    //     //     $this->dayOpen[$vendorDay->pivot->id] = $vendorDay->pivot->open;
+    //     //     $this->dayClose[$vendorDay->pivot->id] = $vendorDay->pivot->close;
+    //     // }
 
-        $this->showDayAssignment = true;
-    }
+    //     $this->showDayAssignment = true;
+    // }
 
-    public function removeDay($id)
-    {
-        $this->selectedModel->refresh();
-        $vendorDays = $this->selectedModel->days;
-        $this->workingDays = [];
-        foreach ($vendorDays as $vendorDay) {
-            if ($vendorDay->pivot->id != $id) {
-                $this->workingDays[] = $vendorDay;
-                $this->dayOpen[$vendorDay->id] = $vendorDay->pivot->open;
-                $this->dayClose[$vendorDay->id] = $vendorDay->pivot->close;
-            } else {
-                $vendorDay->pivot->delete();
-            }
-        }
-    }
-
-
-
-    public function saveDays()
-    {
-        //
-        try {
-
-            $dayVendor = [];
-            foreach ($this->workingDays as $workingDay) {
-
-                $pivotId = $workingDay["pivot"]["id"] ?? '';
-
-                //
-                $openTime = $this->dayOpen[$pivotId] ?? null;
-                $closeTime = $this->dayClose[$pivotId] ?? null;
-
-                if ($openTime == null || $closeTime == null) {
-                    $this->resetValidation();
-                    $this->addError('dayOpen.' . $pivotId . '', __('Both time must be supplied'));
-                    $this->addError('dayClose.' . $pivotId . '', __('Both time must be supplied'));
-                    return;
-                }
-
-                //
-                if ($openTime != null && $closeTime != null) {
-                    array_push($dayVendor, [
-                        "day_id" => $workingDay["id"],
-                        "vendor_id" => $this->selectedModel->id,
-                        "open" => $openTime,
-                        "close" => $closeTime,
-                    ]);
-                }
-            }
-
-            //
-            $this->selectedModel->days()->detach();
-            $this->selectedModel->days()->sync($dayVendor);
-            $this->resetValidation();
-            $this->emit('dismissModal');
-            $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
-        } catch (Exception $error) {
-
-            DB::rollback();
-            $this->resetValidation();
-            $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
-        }
-    }
-
-    public function saveNewDay()
-    {
-        //
-        try {
-
-            $dayVendor = [];
-            $openTime = $this->newDayOpen ?? null;
-            $closeTime = $this->newDayClose ?? null;
-
-            if (($openTime != null && $closeTime == null) || ($openTime == null && $closeTime != null)) {
-                $this->resetValidation();
-                $this->addError('newDayOpen', __('Both time must be supplied'));
-                $this->addError('newDayClose', __('Both time must be supplied'));
-                return;
-            }
-
-            //
-            if ($openTime != null && $closeTime != null) {
-                array_push($dayVendor, [
-                    "day_id" => $this->newSelectedDay ?? $this->days->first()->id,
-                    "vendor_id" => $this->selectedModel->id,
-                    "open" => $openTime,
-                    "close" => $closeTime,
-                ]);
-            }
+    // public function removeDay($id)
+    // {
+    //     $this->selectedModel->refresh();
+    //     $vendorDays = $this->selectedModel->days;
+    //     $this->workingDays = [];
+    //     foreach ($vendorDays as $vendorDay) {
+    //         if ($vendorDay->pivot->id != $id) {
+    //             $this->workingDays[] = $vendorDay;
+    //             $this->dayOpen[$vendorDay->id] = $vendorDay->pivot->open;
+    //             $this->dayClose[$vendorDay->id] = $vendorDay->pivot->close;
+    //         } else {
+    //             $vendorDay->pivot->delete();
+    //         }
+    //     }
+    // }
 
 
-            //
-            // $this->selectedModel->days()->detach();
-            $this->selectedModel->days()->attach($dayVendor);
-            $this->resetValidation();
-            $this->emit('dismissModal');
-            $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
-        } catch (Exception $error) {
 
-            DB::rollback();
-            $this->resetValidation();
-            $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
-        }
-    }
+    // public function saveDays()
+    // {
+    //     //
+    //     try {
+
+    //         $dayVendor = [];
+    //         foreach ($this->workingDays as $workingDay) {
+
+    //             $pivotId = $workingDay["pivot"]["id"] ?? '';
+
+    //             //
+    //             $openTime = $this->dayOpen[$pivotId] ?? null;
+    //             $closeTime = $this->dayClose[$pivotId] ?? null;
+
+    //             if ($openTime == null || $closeTime == null) {
+    //                 $this->resetValidation();
+    //                 $this->addError('dayOpen.' . $pivotId . '', __('Both time must be supplied'));
+    //                 $this->addError('dayClose.' . $pivotId . '', __('Both time must be supplied'));
+    //                 return;
+    //             }
+
+    //             //
+    //             if ($openTime != null && $closeTime != null) {
+    //                 array_push($dayVendor, [
+    //                     "day_id" => $workingDay["id"],
+    //                     "vendor_id" => $this->selectedModel->id,
+    //                     "open" => $openTime,
+    //                     "close" => $closeTime,
+    //                 ]);
+    //             }
+    //         }
+
+    //         //
+    //         $this->selectedModel->days()->detach();
+    //         $this->selectedModel->days()->sync($dayVendor);
+    //         $this->resetValidation();
+    //         $this->emit('dismissModal');
+    //         $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
+    //     } catch (Exception $error) {
+
+    //         DB::rollback();
+    //         $this->resetValidation();
+    //         $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
+    //     }
+    // }
+
+    // public function saveNewDay()
+    // {
+    //     //
+    //     try {
+
+    //         $dayVendor = [];
+    //         $openTime = $this->newDayOpen ?? null;
+    //         $closeTime = $this->newDayClose ?? null;
+
+    //         if (($openTime != null && $closeTime == null) || ($openTime == null && $closeTime != null)) {
+    //             $this->resetValidation();
+    //             $this->addError('newDayOpen', __('Both time must be supplied'));
+    //             $this->addError('newDayClose', __('Both time must be supplied'));
+    //             return;
+    //         }
+
+    //         //
+    //         if ($openTime != null && $closeTime != null) {
+    //             array_push($dayVendor, [
+    //                 "day_id" => $this->newSelectedDay ?? $this->days->first()->id,
+    //                 "vendor_id" => $this->selectedModel->id,
+    //                 "open" => $openTime,
+    //                 "close" => $closeTime,
+    //             ]);
+    //         }
+
+
+    //         //
+    //         // $this->selectedModel->days()->detach();
+    //         $this->selectedModel->days()->attach($dayVendor);
+    //         $this->resetValidation();
+    //         $this->emit('dismissModal');
+    //         $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
+    //     } catch (Exception $error) {
+
+    //         DB::rollback();
+    //         $this->resetValidation();
+    //         $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
+    //     }
+    // }
 }

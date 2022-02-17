@@ -98,18 +98,18 @@ class Vendor extends BaseModel
     public function getIsOpenAttribute($value)
     {
         $value = $this->getRawOriginal('is_open');
-        if ($this->id == 175) {
-            logger("openNow", [$this->openNow]);
-        }
-        if (!$value) {
-            return false;
-        } else if (count($this->days) == 0) {
-            return true;
-        } else if (count($this->openToday) > 0 && count($this->openNow) > 0) {
-            return true;
-        } else {
-            return false;
-        }
+        // if ($this->id == 175) {
+        //     logger("openNow", [$this->openNow]);
+        // }
+        // if (!$value) {
+        //     return false;
+        // } else if (count($this->days) == 0) {
+        //     return true;
+        // } else if (count($this->openToday) > 0 && count($this->openNow) > 0) {
+        //     return true;
+        // } else {
+        //     return false;
+        // }
     }
 
     public function getCanRateAttribute()
@@ -126,56 +126,56 @@ class Vendor extends BaseModel
     public function getSlotsAttribute()
     {
 
-        $slots = [];
-        $days = $this->days->pluck('name')->toArray();
-        $daysTiming = $this->days;
-        if (!empty($days)) {
-            //max order schedule days
-            $daysCount = setting('maxScheduledDay', 5) + 1;
-            $maxScheduledTime = setting('maxScheduledTime', 2);
-            $currentTime = now()->format('H:s:i');
+    //     $slots = [];
+    //     // $days = $this->days->pluck('name')->toArray();
+    //     // $daysTiming = $this->days;
+    //     if (!empty($days)) {
+    //         //max order schedule days
+    //         // $daysCount = setting('maxScheduledDay', 5) + 1;
+    //         // $maxScheduledTime = setting('maxScheduledTime', 2);
+    //         // $currentTime = now()->format('H:s:i');
 
-            //
-            for ($i = 0; $i < $daysCount; $i++) {
-                $date = Carbon::now()->addDays($i);
-                $dateDayName = $date->format('l');
-                try {
-                    if (in_array($dateDayName, $days)) {
-                        $schuldeInfo = [];
-                        $schuldeInfo["date"] = $date;
-                        //times
-                        $dayTimingIndex = array_search($dateDayName, $days);
-                        $dayTiming = $daysTiming[$dayTimingIndex];
+    //         //
+    //         for ($i = 0; $i < $daysCount; $i++) {
+    //             $date = Carbon::now()->addDays($i);
+    //             $dateDayName = $date->format('l');
+    //             try {
+    //                 if (in_array($dateDayName, $days)) {
+    //                     $schuldeInfo = [];
+    //                     $schuldeInfo["date"] = $date;
+    //                     //times
+    //                     $dayTimingIndex = array_search($dateDayName, $days);
+    //                     $dayTiming = $daysTiming[$dayTimingIndex];
 
-                        $hoursdIFF = $this->calculateDiffInHours($dayTiming->pivot->open, $dayTiming->pivot->close);
-                        $hoursdIFF -= $maxScheduledTime;
-                        if (!empty($hoursdIFF)) {
-                            $dateTiming = [];
-                            for ($j = 1; $j < $hoursdIFF; $j++) {
-                                $time = $this->carbonFromTime($dayTiming->pivot->open)->addHours($j)->format('H:s:i');
+    //                     $hoursdIFF = $this->calculateDiffInHours($dayTiming->pivot->open, $dayTiming->pivot->close);
+    //                     $hoursdIFF -= $maxScheduledTime;
+    //                     if (!empty($hoursdIFF)) {
+    //                         $dateTiming = [];
+    //                         for ($j = 1; $j < $hoursdIFF; $j++) {
+    //                             $time = $this->carbonFromTime($dayTiming->pivot->open)->addHours($j)->format('H:s:i');
 
-                                //
-                                //remove time on today
-                                $minTime = $this->carbonFromTime($currentTime)->addHours($maxScheduledTime)->format('H:s:i');
-                                if ($i == 0 && $minTime <= $time) {
-                                    array_push($dateTiming, $time);
-                                } else if ($i > 0) {
-                                    array_push($dateTiming, $time);
-                                }
-                            }
+    //                             //
+    //                             //remove time on today
+    //                             $minTime = $this->carbonFromTime($currentTime)->addHours($maxScheduledTime)->format('H:s:i');
+    //                             if ($i == 0 && $minTime <= $time) {
+    //                                 array_push($dateTiming, $time);
+    //                             } else if ($i > 0) {
+    //                                 array_push($dateTiming, $time);
+    //                             }
+    //                         }
 
-                            $schuldeInfo["times"] = $dateTiming;
-                            //
-                            array_push($slots, $schuldeInfo);
-                        }
-                    }
-                } catch (\Exception $ex) {
-                    logger("Error", [$ex]);
-                }
-            }
-        }
+    //                         $schuldeInfo["times"] = $dateTiming;
+    //                         //
+    //                         array_push($slots, $schuldeInfo);
+    //                     }
+    //                 }
+    //             } catch (\Exception $ex) {
+    //                 logger("Error", [$ex]);
+    //             }
+    //         }
+    //     }
 
-        return $slots;
+    //     return $slots;
     }
 
 
@@ -204,26 +204,26 @@ class Vendor extends BaseModel
     }
 
 
-    public function days()
-    {
-        return $this->belongsToMany('App\Models\Day')->withPivot('id', 'day_id', 'open', 'close');
-    }
+    // public function days()
+    // {
+    //     return $this->belongsToMany('App\Models\Day')->withPivot('id', 'day_id', 'open', 'close');
+    // }
 
 
 
 
-    public function cities()
-    {
-        return $this->belongsToMany('App\Models\City');
-    }
-    public function states()
-    {
-        return $this->belongsToMany('App\Models\State');
-    }
-    public function countries()
-    {
-        return $this->belongsToMany('App\Models\Country');
-    }
+    // public function cities()
+    // {
+    //     return $this->belongsToMany('App\Models\City');
+    // }
+    // public function states()
+    // {
+    //     return $this->belongsToMany('App\Models\State');
+    // }
+    // public function countries()
+    // {
+    //     return $this->belongsToMany('App\Models\Country');
+    // }
 
     public function payment_methods()
     {
@@ -237,20 +237,20 @@ class Vendor extends BaseModel
         return $this->hasMany('App\Models\PackageTypePricing', 'vendor_id', 'id');
     }
 
-    public function openToday()
-    {
-        $now = Carbon::now();
-        $todayName = $now->format('l');
-        return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->where('name', $todayName);
-    }
+    // public function openToday()
+    // {
+    //     $now = Carbon::now();
+    //     $todayName = $now->format('l');
+    //     return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->where('name', $todayName);
+    // }
 
-    public function openNow()
-    {
-        $now = Carbon::now();
-        $nowTime = $now->format('H:i:s');
-        $todayName = $now->format('l');
-        return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->whereTime('open', '<=', $nowTime)->whereTime('close', '>', $nowTime)->where('name', $todayName);
-    }
+    // public function openNow()
+    // {
+    //     $now = Carbon::now();
+    //     $nowTime = $now->format('H:i:s');
+    //     $todayName = $now->format('l');
+    //     return $this->belongsToMany('App\Models\Day')->withPivot('open', 'close')->whereTime('open', '<=', $nowTime)->whereTime('close', '>', $nowTime)->where('name', $todayName);
+    // }
 
     public function getHasSubscriptionAttribute()
     {

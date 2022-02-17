@@ -180,7 +180,7 @@
 
     {{-- timing form --}}
     <div x-data="{ open: @entangle('showDayAssignment') }">
-        <x-modal-lg confirmText="{{ __('Save') }}" action="saveDays" :clickAway="false">
+        <x-modal-lg confirmText="{{ __('Save') }}" :clickAway="false">
 
             <p class="text-xl font-semibold">{{ __('Set vendor open/close time') }}</p>
             <div class="flex items-center py-3 mt-10 border-t border-b">
@@ -211,14 +211,14 @@
                     </div>
                 @endforeach
             @endif
-            <x-buttons.primary title="{{ __('New') }}" type="button" wireClick="$set('showNewDayAssignment',true)" />
+            <x-buttons.primary title="{{ __('New') }}" type="button" wireClick="$set('showNewDayAssignment',false)" />
 
         </x-modal-lg>
     </div>
 
     {{-- new timing form --}}
     <div x-data="{ open: @entangle('showNewDayAssignment') }">
-        <x-modal-lg confirmText="{{ __('Save') }}" action="saveNewDay" :clickAway="false">
+        <x-modal-lg confirmText="{{ __('Save') }}" :clickAway="false">
 
             <p class="text-xl font-semibold">{{ __('Set vendor open/close time') }}</p>
             <div class="flex items-center py-3 mt-10 border-t border-b">
@@ -268,14 +268,6 @@
                     text="{{ $selectedModel->latitude ?? '' }}" />
                 <x-details.item title="{{ __('Longitude') }}"
                     text="{{ $selectedModel->longitude ?? '' }}" />
-                <x-details.item title="{{ __('Categories') }}" text="">
-                    {{ $selectedModel != null
-    ? implode(
-        ', ',
-        $selectedModel->categories()->pluck('name')->toArray(),
-    )
-    : '' }}
-                </x-details.item>
             </div>
             <div class="grid grid-cols-1 gap-4 mt-4 border-t md:grid-cols-2 ">
                 <x-details.item title="{{ __('Tax') }}" text="{{ $selectedModel->tax ?? '0' }}%" />

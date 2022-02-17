@@ -1,4 +1,4 @@
-@section('title', __('States') )
+<!-- @section('title', __('States') )
 <div>
 
     <x-baseview title="{{ __('States') }}">
@@ -26,4 +26,4 @@
         </x-modal>
     </div>
 
-</div>
+</div> -->

@@ -57,9 +57,9 @@ class AutocompleteAddress extends Component
                 "address" => $this->address,
                 "latitude" =>  0.00,
                 "longitude" => 0.00,
-                "city" => "",
-                "state" => "",
-                "country" => "",
+                // "city" => "",
+                // "state" => "",
+                // "country" => "",
             ];
 
             $this->emitUp('autocompleteAddressSelected', $fullAddressData);
@@ -89,25 +89,25 @@ class AutocompleteAddress extends Component
         if ($response->successful()) {
 
 
-            $city = "";
-            $state = "";
-            $country = "";
+            // $city = "";
+            // $state = "";
+            // $country = "";
 
             $addressComponents = $response->json()["result"]["address_components"];
             //
             foreach ($addressComponents as $key => $addressComponent) {
                 //country
-                if (in_array("country", $addressComponent["types"])) {
-                    $country = $addressComponent["long_name"];
-                }
+                // if (in_array("country", $addressComponent["types"])) {
+                //     $country = $addressComponent["long_name"];
+                // }
                 //state
-                else if (in_array("administrative_area_level_1", $addressComponent["types"])) {
-                    $state = $addressComponent["long_name"];
-                }
-                //city
-                else if (in_array("locality", $addressComponent["types"])) {
-                    $city = $addressComponent["long_name"];
-                }
+                // else if (in_array("administrative_area_level_1", $addressComponent["types"])) {
+                //     $state = $addressComponent["long_name"];
+                // }
+                // //city
+                // else if (in_array("locality", $addressComponent["types"])) {
+                //     $city = $addressComponent["long_name"];
+                // }
             }
 
             $this->address = $response->json()["result"]["formatted_address"];
@@ -115,9 +115,9 @@ class AutocompleteAddress extends Component
                 "address" => $this->address,
                 "latitude" => $response->json()["result"]["geometry"]["location"]["lat"],
                 "longitude" => $response->json()["result"]["geometry"]["location"]["lng"],
-                "city" => $city,
-                "state" => $state,
-                "country" => $country,
+                // "city" => $city,
+                // "state" => $state,
+                // "country" => $country,
             ];
 
             $this->emitUp('autocompleteAddressSelected', $fullAddressData);

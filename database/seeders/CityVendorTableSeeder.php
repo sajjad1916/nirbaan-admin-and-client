@@ -1,23 +1,23 @@
 <?php
 
-namespace Database\Seeders;
+// namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
+// use Illuminate\Database\Seeder;
 
-class CityVendorTableSeeder extends Seeder
-{
+// class CityVendorTableSeeder extends Seeder
+// {
 
-    /**
-     * Auto generated seed file
-     *
-     * @return void
-     */
-    public function run()
-    {
+//     /**
+//      * Auto generated seed file
+//      *
+//      * @return void
+//      */
+//     public function run()
+//     {
         
 
-        \DB::table('city_vendor')->delete();
+//         \DB::table('city_vendor')->delete();
         
         
-    }
-}
+//     }
+// }

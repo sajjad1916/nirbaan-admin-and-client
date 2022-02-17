@@ -35,7 +35,7 @@ class NewOrderLivewire extends BaseLivewireComponent
         'managersChange' => 'managersChange',
         'paymentMethodsChange' => 'paymentMethodsChange',
         'vendorChange' => 'vendorChange',
-        'changeVendorTiming' => 'changeVendorTiming',
+        // 'changeVendorTiming' => 'changeVendorTiming',
         'changeFCMToken' => 'changeFCMToken',
         'logout' => 'logout',
         'reviewPayment' => 'reviewPayment',

@@ -1,6 +1,5 @@
 <ul class="mt-6">
 
-
     {{-- dashboard --}}
     <x-menu-item title="{{ __('Dashboard') }}" route="dashboard">
         <x-heroicon-o-template class="w-5 h-5" />
@@ -33,11 +32,6 @@
             <x-heroicon-o-shopping-bag class="w-5 h-5" />
         </x-menu-item>
 
-        <!-- @role('client')
-        <x-menu-item title="{{ __('Create Order') }}" route="newOrder">
-            <x-heroicon-o-location-marker class="w-5 h-5" />
-        </x-menu-item>
-    @endrole -->
 
     {{-- Package --}}
     @showPackage
@@ -48,36 +42,12 @@
                 <x-menu-item title="{{ __('Package Types') }}" route="package.types">
                     <x-heroicon-o-archive class="w-5 h-5" />
                 </x-menu-item>
-
-                <x-menu-item title="{{ __('Countries') }}" route="package.countries">
-                    <x-heroicon-o-globe class="w-5 h-5" />
-                </x-menu-item>
-
-                <x-menu-item title="{{ __('States') }}" route="package.states">
-                    <x-heroicon-o-globe-alt class="w-5 h-5" />
-                </x-menu-item>
-
-                <x-menu-item title="{{ __('Cities') }}" route="package.cities">
-                    <x-heroicon-o-map class="w-5 h-5" />
-                </x-menu-item>
         @endhasanyrole
 
             {{-- manager package delivery options --}}
             @role('manager')
                 <x-menu-item title="{{ __('Pricing') }}" route="package.pricing">
                     <x-heroicon-o-currency-dollar class="w-5 h-5" />
-                </x-menu-item>
-
-                <x-menu-item title="{{ __('Cities') }}" route="package.cities.my">
-                    <x-heroicon-o-location-marker class="w-5 h-5" />
-                </x-menu-item>
-
-                <x-menu-item title="{{ __('States') }}" route="package.states.my">
-                    <x-heroicon-o-globe-alt class="w-5 h-5" />
-                </x-menu-item>
-
-                <x-menu-item title="{{ __('Countries') }}" route="package.countries.my">
-                    <x-heroicon-o-globe class="w-5 h-5" />
                 </x-menu-item>
 
             @endhasanyrole
