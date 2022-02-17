@@ -25,27 +25,12 @@ class DashboardLivewire extends Component
         else if($user->hasRole('client')){
             $totalOrders = Number::n(Order::where('user_id',$user->id)->count())->round(3)->getSuffixNotation();
         } 
-        
-        // else {
-        //     $earning = Earning::firstOrCreate(
-        //         [
-        //             "vendor_id" => $user->vendor_id,
-        //         ],
-        //         [
-        //             "amount" => 0,
-        //         ]
-        //     );
-        //     $totalEarnings = Number::n($earning->amount)->round(3)->getSuffixNotation();
-        // }
-
-
        
         $totalVendors = Number::n(Vendor::mine()->count())->round(3)->getSuffixNotation();
         $totalClients = Number::n(User::client()->count())->round(3)->getSuffixNotation();
 
         return view('livewire.dashboard', [
             "totalOrders" => $totalOrders,
-            // "totalEarnings" => $totalEarnings,
             "totalVendors" => $totalVendors,
             "totalClients" => $totalClients,
 

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "87e52ce6f91ea456239ddff87f5d67cd",
+    "content-hash": "5275c14320f19ccadc804b02865f0f4f",
     "packages": [
         {
             "name": "ahsankhatri/firestore-php",
@@ -2543,47 +2543,6 @@
                 }
             ],
             "time": "2021-11-21T21:26:01+00:00"
-        },
-        {
-            "name": "jzonta/faker-restaurant",
-            "version": "1.1.11",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/jzonta/FakerRestaurant.git",
-                "reference": "455009b40e7f57c92ee8f194480c4840e92e9e09"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/jzonta/FakerRestaurant/zipball/455009b40e7f57c92ee8f194480c4840e92e9e09",
-                "reference": "455009b40e7f57c92ee8f194480c4840e92e9e09",
-                "shasum": ""
-            },
-            "require": {
-                "fzaninotto/faker": "~1.4",
-                "php": ">=5.4.0"
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "FakerRestaurant\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "João Zonta"
-                }
-            ],
-            "description": "Food and Beverage names generate using fzaninotto/Faker",
-            "homepage": "https://github.com/jzonta/FakerRestaurant",
-            "support": {
-                "issues": "https://github.com/jzonta/FakerRestaurant/issues",
-                "source": "https://github.com/jzonta/FakerRestaurant/tree/v1.1.11"
-            },
-            "time": "2020-10-30T18:41:05+00:00"
         },
         {
             "name": "kdion4891/laravel-livewire-tables",
@@ -9169,74 +9128,6 @@
         }
     ],
     "packages-dev": [
-        {
-            "name": "dipeshsukhia/laravel-country-state-city-data",
-            "version": "v1.1.2",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/dipeshsukhia/laravel-country-state-city-data.git",
-                "reference": "b4dca13190b29c108fd89c74cdeaccf9b7cbff05"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/dipeshsukhia/laravel-country-state-city-data/zipball/b4dca13190b29c108fd89c74cdeaccf9b7cbff05",
-                "reference": "b4dca13190b29c108fd89c74cdeaccf9b7cbff05",
-                "shasum": ""
-            },
-            "require": {
-                "illuminate/support": "5.1.*|5.2.*|5.3.*|5.4.*|5.5.*|5.6.*|5.7.*|5.8.*|^6.0|^7.0|^8.0",
-                "php": ">=5.5.9"
-            },
-            "require-dev": {
-                "orchestra/testbench": "3.8.*",
-                "phpunit/phpunit": "^4.8|^5.0|^6.0|^7.0|^8.0|^9.0"
-            },
-            "type": "library",
-            "extra": {
-                "laravel": {
-                    "providers": [
-                        "DipeshSukhia\\LaravelCountryStateCityData\\LaravelCountryStateCityDataServiceProvider"
-                    ],
-                    "aliases": {
-                        "LaravelCountryStateCityData": "DipeshSukhia\\LaravelCountryStateCityData\\LaravelCountryStateCityDataFacade"
-                    }
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "DipeshSukhia\\LaravelCountryStateCityData\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Dipesh Sukhia",
-                    "email": "dipesh.sukhia@gmail.com",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Country State City Data Provider",
-            "homepage": "https://github.com/dipeshsukhia/laravel-country-state-city-data",
-            "keywords": [
-                "cities",
-                "city",
-                "countries",
-                "country",
-                "dipeshsukhia",
-                "laravel",
-                "laravel-country-state-city-data",
-                "state",
-                "states"
-            ],
-            "support": {
-                "issues": "https://github.com/dipeshsukhia/laravel-country-state-city-data/issues",
-                "source": "https://github.com/dipeshsukhia/laravel-country-state-city-data/tree/v1.1.2"
-            },
-            "time": "2021-05-08T06:10:42+00:00"
-        },
         {
             "name": "doctrine/instantiator",
             "version": "1.4.0",
