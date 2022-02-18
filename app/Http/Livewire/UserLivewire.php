@@ -24,7 +24,7 @@ class UserLivewire extends BaseLivewireComponent
     public $role;
     public $updateRole;
     public $commission;
-    public $walletBalance;
+    // public $walletBalance;
     //
     public $vendorsIDs;
     public $roleName;
@@ -37,7 +37,7 @@ class UserLivewire extends BaseLivewireComponent
         "phone" => "required|unique:users",
         "password" => "sometimes|nullable|string",
         "commission" => "sometimes|nullable|numeric",
-        "walletBalance" => "sometimes|nullable|numeric",
+        // "walletBalance" => "sometimes|nullable|numeric",
     ];
 
 
@@ -113,7 +113,7 @@ class UserLivewire extends BaseLivewireComponent
             }
 
             //update wallet
-            $user->updateWallet($this->walletBalance);
+            // $user->updateWallet($this->walletBalance);
 
             DB::commit();
 
@@ -138,7 +138,7 @@ class UserLivewire extends BaseLivewireComponent
         $this->updateRole = $this->selectedModel->role_id;
         $this->setRoleName($this->selectedModel->role_id);
         $this->commission = $this->selectedModel->commission;
-        $this->walletBalance = $this->selectedModel->wallet->balance ?? 0.00;
+        // $this->walletBalance = $this->selectedModel->wallet->balance ?? 0.00;
         $this->emit('showEditModal');
     }
 
@@ -175,7 +175,7 @@ class UserLivewire extends BaseLivewireComponent
 
 
             //update wallet
-            $user->updateWallet($this->walletBalance);
+            // $user->updateWallet($this->walletBalance);
 
             DB::commit();
 

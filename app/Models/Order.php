@@ -139,29 +139,29 @@ class Order extends BaseModel
 
 
     //updating wallet balance is order failed and was paid via wallet
-    public function refundUser()
-    {
-        //'pending','preparing','ready','enroute','delivered','failed','cancelled'
-        if (in_array($this->status, ['failed', 'cancelled']) && in_array($this->payment_status, ['successful'])  && $this->payment_method->slug != "cash") {
+    // public function refundUser()
+    // {
+    //     //'pending','preparing','ready','enroute','delivered','failed','cancelled'
+    //     if (in_array($this->status, ['failed', 'cancelled']) && in_array($this->payment_status, ['successful'])  && $this->payment_method->slug != "cash") {
 
-            //update user wallet
-            $wallet = Wallet::firstOrCreate(
-                ['user_id' => $this->user_id],
-                ['balance' => 0]
-            );
+    //         //update user wallet
+    //         $wallet = Wallet::firstOrCreate(
+    //             ['user_id' => $this->user_id],
+    //             ['balance' => 0]
+    //         );
 
-            //
-            $wallet->balance += $this->total;
-            $wallet->save();
+    //         //
+    //         $wallet->balance += $this->total;
+    //         $wallet->save();
 
-            //save wallet transactions
-            $walletTransaction = new WalletTransaction();
-            $walletTransaction->wallet_id = $wallet->id;
-            $walletTransaction->amount = $this->total;
-            $walletTransaction->reason = "Refund";
-            $walletTransaction->status = "successful";
-            $walletTransaction->is_credit = 1;
-            $walletTransaction->save();
-        }
-    }
+    //         //save wallet transactions
+    //         $walletTransaction = new WalletTransaction();
+    //         $walletTransaction->wallet_id = $wallet->id;
+    //         $walletTransaction->amount = $this->total;
+    //         $walletTransaction->reason = "Refund";
+    //         $walletTransaction->status = "successful";
+    //         $walletTransaction->is_credit = 1;
+    //         $walletTransaction->save();
+    //     }
+    // }
 }

@@ -1,19 +1,19 @@
 <?php
 
-namespace App\Http\Livewire;
+// namespace App\Http\Livewire;
 
-use App\Models\WalletTransaction;
+// use App\Models\WalletTransaction;
 
-class WalletTransactionLivewire extends BaseLivewireComponent
-{
+// class WalletTransactionLivewire extends BaseLivewireComponent
+// {
 
-    //
-    public $model = WalletTransaction::class;
+//     //
+//     public $model = WalletTransaction::class;
 
-    public function render()
-    {
-        return view('livewire.wallet-transactions');
-    }
+//     public function render()
+//     {
+//         return view('livewire.wallet-transactions');
+//     }
 
 
-}
+// }

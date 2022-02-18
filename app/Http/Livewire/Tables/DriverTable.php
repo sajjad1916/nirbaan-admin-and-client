@@ -23,7 +23,7 @@ class DriverTable extends BaseTableComponent
             Column::make(__('Name'),'name')->searchable()->sortable(),
             Column::make(__('Email'),'email')->searchable()->sortable(),
             Column::make(__('Phone'),'phone')->searchable()->sortable(),
-            Column::make(__('Wallet'),'wallet')->view('components.table.wallet'),
+            // Column::make(__('Wallet'),'wallet')->view('components.table.wallet'),
             Column::make(__('Commission')."(%)", 'commission'),
             Column::make(__('Role'), 'role_name'),
             Column::make(__('Created At'), 'formatted_date'),

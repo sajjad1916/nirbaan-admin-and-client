@@ -12,7 +12,7 @@ use App\Http\Livewire\DashboardLivewire;
 use App\Http\Livewire\VendorTypeLivewire;
 use App\Http\Livewire\VendorLivewire;
 use App\Http\Livewire\ReviewLivewire;
-use App\Http\Livewire\WalletTransactionLivewire;
+// use App\Http\Livewire\WalletTransactionLivewire;
 
 
 use App\Http\Livewire\OrderLivewire;
@@ -26,7 +26,6 @@ use App\Http\Livewire\WebsiteSettingsLivewire;
 use App\Http\Livewire\ServerSettingsLivewire;
 use App\Http\Livewire\SettingsLivewire;
 use App\Http\Livewire\PaymentMethodivewire;
-use App\Http\Livewire\VendorPaymentMethodLivewire;
 use App\Http\Livewire\Payment\OrderPaymentLivewire;
 use App\Http\Livewire\Payment\OrderPaymentCallbackLivewire;
 
@@ -46,8 +45,8 @@ use App\Http\Livewire\SMSGatewayLivewire;
 use App\Http\Livewire\CronJobLivewire;
 
 
-use App\Http\Livewire\Payment\WalletTopUpLivewire;
-use App\Http\Livewire\Payment\WalletTopUpCallbackLivewire;
+// use App\Http\Livewire\Payment\WalletTopUpLivewire;
+// use App\Http\Livewire\Payment\WalletTopUpCallbackLivewire;
 
 
 use App\Http\Livewire\ProfileLivewire;
@@ -119,7 +118,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('operations/cron/job', CronJobLivewire::class)->name('configure.cron.job');
             Route::get('reviews', ReviewLivewire::class)->name('reviews');
             
-            Route::get('wallet/transactions', WalletTransactionLivewire::class)->name('wallet.transactions');
+            // Route::get('wallet/transactions', WalletTransactionLivewire::class)->name('wallet.transactions');
             //
             Route::get('setting/currencies', CurrencyLivewire::class)->name('currencies');
             Route::get('setting/settings', SettingsLivewire::class)->name('settings');
@@ -150,7 +149,6 @@ Route::group(['middleware' => ['web']], function () {
 
             Route::get('package/pricing', PackageTypePricingLivewire::class)->name('package.pricing');
             Route::get('drivers', DriverLivewire::class)->name('drivers');
-            Route::get('vendor/payment/methods', VendorPaymentMethodLivewire::class)->name('payment.methods.my');
             
         });
       
@@ -160,8 +158,8 @@ Route::group(['middleware' => ['web']], function () {
     Route::get('order/payment', OrderPaymentLivewire::class)->name('order.payment');
     Route::get('order/payment/callback', OrderPaymentCallbackLivewire::class)->name('payment.callback');
     //Wallet
-    Route::get('wallet/topup', WalletTopUpLivewire::class)->name('wallet.topup');
-    Route::get('wallet/topup/callback', WalletTopUpCallbackLivewire::class)->name('wallet.topup.callback');
+    // Route::get('wallet/topup', WalletTopUpLivewire::class)->name('wallet.topup');
+    // Route::get('wallet/topup/callback', WalletTopUpCallbackLivewire::class)->name('wallet.topup.callback');
     
 });
 

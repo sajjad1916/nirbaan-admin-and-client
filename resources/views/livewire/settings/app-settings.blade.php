@@ -60,11 +60,11 @@
                 <div class='grid grid-cols-1 gap-4 mb-10 md:grid-cols-2 lg:grid-cols-3'>
 
 
-                    <div class="block mt-4 text-sm">
+                    <!-- <div class="block mt-4 text-sm">
                         <p>{{ __('Driver Wallet System') }}</p>
                         <x-checkbox title="{{ __('Enable') }}" name="enableDriverWallet"
                             :defer="true" />
-                    </div>
+                    </div> -->
 
                     <div class="block mt-4 text-sm">
                         <p>{{ __('Vendor Earning Enable(irrespective of the payment method used)') }}</p>
@@ -73,12 +73,12 @@
                     </div>
 
 
-                    <div class="block mt-4 text-sm">
+                    <!-- <div class="block mt-4 text-sm">
                         <p>{{ __('Driver Wallet Balance Require') }}</p>
                         <x-checkbox title="{{ __('Enable') }}" name="driverWalletRequired"
                             :defer="true"
                             description="{{ __('This means driver must have enough in wallet balance irrespective of the payment method') }}" />
-                    </div>
+                    </div> -->
 
                     <div class="block mt-4 text-sm">
                         <x-input title="{{ __('Accept Time Duration(seconds)') }}"

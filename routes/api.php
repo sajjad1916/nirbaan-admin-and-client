@@ -11,8 +11,8 @@ use App\Http\Controllers\API\PackageOrderController;
 use App\Http\Controllers\API\PackageTypeController;
 use App\Http\Controllers\API\ChatNotificationController;
 use App\Http\Controllers\API\RatingController;
-use App\Http\Controllers\API\WalletController;
-use App\Http\Controllers\API\OrderPaymentCallbackController;
+// use App\Http\Controllers\API\WalletController;
+// use App\Http\Controllers\API\OrderPaymentCallbackController;
 use App\Http\Controllers\API\ReviewController;
 
 
@@ -75,7 +75,7 @@ Route::get('coupons/{code}', [CouponController::class, 'show']);
 Route::get('package/types', [PackageTypeController::class, 'index']);
 //
 Route::post('order/payment/callback', [OrderPaymentCallbackController::class, 'order'])->name('api.payment.callback');
-Route::post('wallet/topup/callback', [OrderPaymentCallbackController::class, 'wallet'])->name('api.wallet.topup.callback');
+// Route::post('wallet/topup/callback', [OrderPaymentCallbackController::class, 'wallet'])->name('api.wallet.topup.callback');
 Route::get('/delivery',[OrderController::class,'deliveryZone']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -95,9 +95,9 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('chat/notification', [ChatNotificationController::class, 'send']);
 
     //wallets
-    Route::get('wallet/balance', [WalletController::class, 'index']);
-    Route::post('wallet/topup', [WalletController::class, 'topup']);
-    Route::get('wallet/transactions', [WalletController::class, 'transactions']);
-    Route::post('wallet/transfer', [WalletController::class, 'transferBalance']);
+    // Route::get('wallet/balance', [WalletController::class, 'index']);
+    // Route::post('wallet/topup', [WalletController::class, 'topup']);
+    // Route::get('wallet/transactions', [WalletController::class, 'transactions']);
+    // Route::post('wallet/transfer', [WalletController::class, 'transferBalance']);
     
 });

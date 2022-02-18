@@ -79,22 +79,6 @@
         </x-menu-item>
     @endhasanyrole
 
-    @hasanyrole('admin')
-
-        {{-- wallet transactions --}}
-        <x-menu-item title="{{ __('Wallet Transactions') }}" route="wallet.transactions">
-            <x-heroicon-o-collection class="w-5 h-5" />
-        </x-menu-item>
-
-    @endhasanyrole
-
-
-    {{-- Payment methods --}}
-    @hasanyrole('manager')
-        <x-menu-item title="{{ __('Payment Methods') }}" route="payment.methods.my">
-            <x-heroicon-o-cash class="w-5 h-5" />
-        </x-menu-item>
-    @endhasanyrole
 
 
     @hasanyrole('admin')

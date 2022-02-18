@@ -24,7 +24,7 @@
             @if( ($roleName ?? "") == "driver")
                 <x-input title="{{ __('Commission') }}" name="commission" placeholder="" />
             @endif
-            <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" />
+            <!-- <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" /> -->
         </x-modal>
     </div>
 
@@ -42,7 +42,7 @@
                 @if( ($roleName ?? "") == "driver")
                     <x-input title="{{ __('Commission') }}" name="commission" placeholder="" />
                 @endif
-            <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" />
+            <!-- <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" /> -->
 
         </x-modal>
     </div>

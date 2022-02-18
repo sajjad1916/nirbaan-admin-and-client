@@ -17,9 +17,9 @@ class UserObserver
     public function created(User $user)
     {
         //update wallet
-        if (empty($user->wallet)) {
-            $user->updateWallet(0);
-        }
+        // if (empty($user->wallet)) {
+        //     $user->updateWallet(0);
+        // }
         //send mail
         try {
             \Mail::to($user->email)->send(new NewAccountMail($user));

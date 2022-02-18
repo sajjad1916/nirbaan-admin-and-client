@@ -1,4 +1,4 @@
-<div>
+<!-- <div>
     <div class="">
 
         <div wire:loading.flex>
@@ -56,4 +56,4 @@
         <p class="{{ $done ? 'block' : 'hidden' }} w-full p-4 text-sm text-center text-gray-500">{{__('You can close this window')}}</p>
         <p class="{{ $done ? 'hidden' : 'block' }} w-full p-4 text-sm text-center text-gray-500">{{__('Do not close this window')}}</p>
     </div>
-</div>
+</div> -->

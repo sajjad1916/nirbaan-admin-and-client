@@ -1,4 +1,4 @@
-@section('title', __('Wallet Topup Payment'))
+<!-- @section('title', __('Wallet Topup Payment'))
     <div class="">
         <div class="w-11/12 p-12 mx-auto mt-20 text-center border rounded shadow md:w-6/12 lg:w-4/12">
             @if ($error)
@@ -15,4 +15,4 @@
 
         {{-- close --}}
         <p class="w-full p-4 text-sm text-center text-gray-500">{{__('You may close this window')}}</p>
-    </div>
+    </div> -->

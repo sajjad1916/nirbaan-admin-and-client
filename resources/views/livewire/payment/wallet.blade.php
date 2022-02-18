@@ -1,4 +1,4 @@
-@section('title', __('Wallet Topup'))
+<!-- @section('title', __('Wallet Topup'))
     <div class="">
 
         <div wire:loading.flex>
@@ -39,4 +39,4 @@
         @else
             @include('livewire.payment.offline.wallet')
         @endif
-
+ -->
