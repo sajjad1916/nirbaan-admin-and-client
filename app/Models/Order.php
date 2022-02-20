@@ -107,12 +107,28 @@ class Order extends BaseModel
         return ($this->vendor->vendor_type->slug ?? '') == "package";
     }
 
-    public function getIsFoodAttribute()
+
+    public function getCanRateAttribute()
     {
-        return in_array(($this->vendor->vendor_type->slug ?? ''), ["food", "grocery", "pharmacy"]);
+
+        if (empty(Auth::user())) {
+            return false;
+        }
+        //
+        $vendorReview = Review::where('user_id', Auth::id())->where('order_id', $this->id)->first();
+        return empty($vendorReview);
     }
 
+    public function getCanRateDriverAttribute()
+    {
 
+        if (empty(Auth::user())) {
+            return false;
+        }
+        //
+        $driverReview = Review::where('user_id', Auth::id())->where('driver_id', $this->driver_id)->first();
+        return empty($driverReview);
+    }
 
     
 }
