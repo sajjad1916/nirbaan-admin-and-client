@@ -150,5 +150,5 @@ class Vendor extends BaseModel
     {
         
     }
-
+    public function getSlotsAttribute(){}
 }

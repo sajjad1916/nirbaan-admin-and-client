@@ -2,10 +2,8 @@
 
 namespace App\Http\Livewire;
 
-// use App\Models\Category;
 use App\Models\Vendor;
 use App\Models\User;
-// use App\Models\Day;
 use App\Models\VendorType;
 use Exception;
 use Illuminate\Support\Facades\DB;
@@ -40,16 +38,13 @@ class VendorLivewire extends BaseLivewireComponent
     public $auto_assignment;
     public $auto_accept;
     public $allow_schedule_order;
-    // public $has_sub_categories;
-    // public $use_subscription = false;
     public $vendor_type_id;
     public $vendorTypes;
     public $isPackageVendor = false;
-    // public $isServiceVendor = false;
+
 
     //
     public $managersIDs;
-    // public $categoriesIDs;
     public $days;
     public $workingDays;
     public $workingDaysExcluded = [];
@@ -100,8 +95,6 @@ class VendorLivewire extends BaseLivewireComponent
         //
         $vendorType = VendorType::find($value);
         $this->isPackageVendor = $vendorType->slug == "parcel";
-        // $this->isServiceVendor = $vendorType->slug == "service";
-        // $this->updateCategorySelector();
     }
 
     public function showCreateModal()
@@ -144,9 +137,9 @@ class VendorLivewire extends BaseLivewireComponent
             $model->auto_assignment = $this->auto_assignment ?? false;
             $model->auto_accept = $this->auto_accept ?? false;
             $model->allow_schedule_order = $this->allow_schedule_order ?? false;
-            // $model->has_sub_categories = $this->has_sub_categories ?? false;
+         
             $model->vendor_type_id = $this->vendor_type_id;
-            // $model->use_subscription = $this->use_subscription ?? false;
+          
             //creator
             $model->creator_id = \Auth::id();
             $model->save();
@@ -165,8 +158,7 @@ class VendorLivewire extends BaseLivewireComponent
                 $this->secondPhoto = null;
             }
 
-            //
-            // $model->categories()->attach($this->categoriesIDs);
+      
 
             DB::commit();
 
@@ -205,16 +197,15 @@ class VendorLivewire extends BaseLivewireComponent
         $this->auto_assignment = $this->selectedModel->auto_assignment;
         $this->auto_accept = $this->selectedModel->auto_accept;
         $this->allow_schedule_order = $this->selectedModel->allow_schedule_order;
-        // $this->has_sub_categories = $this->selectedModel->has_sub_categories;
+
         $this->charge_per_km = $this->selectedModel->charge_per_km;
-        // $this->use_subscription = $this->selectedModel->use_subscription ?? false;
+        
 
         
         //
         $this->updatedVendorTypeId($this->selectedModel->vendor_type_id);
 
-        // $this->categoriesIDs = $this->selectedModel->categories()->pluck('category_id');
-        // $this->updateCategorySelector();
+      
         $this->emit('showEditModal');
         $this->emit('initialAddressSelected', $this->address);
     }
@@ -266,8 +257,7 @@ class VendorLivewire extends BaseLivewireComponent
             $model->auto_assignment = $this->auto_assignment;
             $model->auto_accept = $this->auto_accept;
             $model->allow_schedule_order = $this->allow_schedule_order;
-            // $model->has_sub_categories = $this->has_sub_categories;
-            // $model->use_subscription = $this->use_subscription;
+      
             $model->save();
 
             if ($this->photo) {
@@ -284,8 +274,6 @@ class VendorLivewire extends BaseLivewireComponent
                 $this->secondPhoto = null;
             }
 
-            //
-            // $model->categories()->sync($this->categoriesIDs);
 
             DB::commit();
 
@@ -315,20 +303,7 @@ class VendorLivewire extends BaseLivewireComponent
         $this->managersIDs = $data;
     }
 
-    // public function categoriesChange($data)
-    // {
-    //     $this->categoriesIDs = $data;
-    // }
-
-    // public function updateCategorySelector()
-    // {
-    //     $cateogires = Category::active()->where('vendor_type_id', $this->vendor_type_id)->get();
-    //     if ($this->showCreate) {
-    //         $this->showSelect2("#categoriesSelect2", $this->categoriesIDs, "categoriesChange", $cateogires);
-    //     } else {
-    //         $this->showSelect2("#editCategoriesSelect2", $this->categoriesIDs, "categoriesChange", $cateogires);
-    //     }
-    // }
+    
 
 
 
@@ -368,125 +343,4 @@ class VendorLivewire extends BaseLivewireComponent
         $this->longitude = $data["longitude"];
     }
 
-
-
-    //CUSTOM DAYS
-    // public function changeVendorTiming($id)
-    // {
-    //     $this->selectedModel = $this->model::find($id);
-    //     // $this->days = Day::get();
-    //     // $vendorDays = $this->selectedModel->days;
-    //     // foreach ($vendorDays as $vendorDay) {
-    //     //     $this->workingDays[] = $vendorDay;
-    //     //     $this->dayOpen[$vendorDay->pivot->id] = $vendorDay->pivot->open;
-    //     //     $this->dayClose[$vendorDay->pivot->id] = $vendorDay->pivot->close;
-    //     // }
-
-    //     $this->showDayAssignment = true;
-    // }
-
-    // public function removeDay($id)
-    // {
-    //     $this->selectedModel->refresh();
-    //     $vendorDays = $this->selectedModel->days;
-    //     $this->workingDays = [];
-    //     foreach ($vendorDays as $vendorDay) {
-    //         if ($vendorDay->pivot->id != $id) {
-    //             $this->workingDays[] = $vendorDay;
-    //             $this->dayOpen[$vendorDay->id] = $vendorDay->pivot->open;
-    //             $this->dayClose[$vendorDay->id] = $vendorDay->pivot->close;
-    //         } else {
-    //             $vendorDay->pivot->delete();
-    //         }
-    //     }
-    // }
-
-
-
-    // public function saveDays()
-    // {
-    //     //
-    //     try {
-
-    //         $dayVendor = [];
-    //         foreach ($this->workingDays as $workingDay) {
-
-    //             $pivotId = $workingDay["pivot"]["id"] ?? '';
-
-    //             //
-    //             $openTime = $this->dayOpen[$pivotId] ?? null;
-    //             $closeTime = $this->dayClose[$pivotId] ?? null;
-
-    //             if ($openTime == null || $closeTime == null) {
-    //                 $this->resetValidation();
-    //                 $this->addError('dayOpen.' . $pivotId . '', __('Both time must be supplied'));
-    //                 $this->addError('dayClose.' . $pivotId . '', __('Both time must be supplied'));
-    //                 return;
-    //             }
-
-    //             //
-    //             if ($openTime != null && $closeTime != null) {
-    //                 array_push($dayVendor, [
-    //                     "day_id" => $workingDay["id"],
-    //                     "vendor_id" => $this->selectedModel->id,
-    //                     "open" => $openTime,
-    //                     "close" => $closeTime,
-    //                 ]);
-    //             }
-    //         }
-
-    //         //
-    //         $this->selectedModel->days()->detach();
-    //         $this->selectedModel->days()->sync($dayVendor);
-    //         $this->resetValidation();
-    //         $this->emit('dismissModal');
-    //         $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
-    //     } catch (Exception $error) {
-
-    //         DB::rollback();
-    //         $this->resetValidation();
-    //         $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
-    //     }
-    // }
-
-    // public function saveNewDay()
-    // {
-    //     //
-    //     try {
-
-    //         $dayVendor = [];
-    //         $openTime = $this->newDayOpen ?? null;
-    //         $closeTime = $this->newDayClose ?? null;
-
-    //         if (($openTime != null && $closeTime == null) || ($openTime == null && $closeTime != null)) {
-    //             $this->resetValidation();
-    //             $this->addError('newDayOpen', __('Both time must be supplied'));
-    //             $this->addError('newDayClose', __('Both time must be supplied'));
-    //             return;
-    //         }
-
-    //         //
-    //         if ($openTime != null && $closeTime != null) {
-    //             array_push($dayVendor, [
-    //                 "day_id" => $this->newSelectedDay ?? $this->days->first()->id,
-    //                 "vendor_id" => $this->selectedModel->id,
-    //                 "open" => $openTime,
-    //                 "close" => $closeTime,
-    //             ]);
-    //         }
-
-
-    //         //
-    //         // $this->selectedModel->days()->detach();
-    //         $this->selectedModel->days()->attach($dayVendor);
-    //         $this->resetValidation();
-    //         $this->emit('dismissModal');
-    //         $this->showSuccessAlert(__("Vendor Open/close time") . " " . __("updated successfully!"));
-    //     } catch (Exception $error) {
-
-    //         DB::rollback();
-    //         $this->resetValidation();
-    //         $this->showErrorAlert($error->getMessage() ?? __("Vendor Open/close time") . " " . __("update failed!"));
-    //     }
-    // }
 }
