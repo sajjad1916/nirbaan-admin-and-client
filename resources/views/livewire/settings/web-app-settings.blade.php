@@ -59,11 +59,7 @@
                             <x-input title="{{ __('Cancel Pending Order Time') }} (Mins)" name="autoCancelPendingOrderTime" type="number" />
                             <p class="mt-1 text-xs text-gray-500">{{ __("Auto cancel pending orders") }}</p>
                         </div>
-                        {{-- autocancel pending order --}}
-                        <div>
-                            <x-input title="{{ __('Default Rating') }}" name="defaultVendorRating" type="number" />
-                            <p class="mt-1 text-xs text-gray-500">{{ __("Default Rating") }}</p>
-                        </div>
+                       
                     </div>
                 </div>
                 <div>

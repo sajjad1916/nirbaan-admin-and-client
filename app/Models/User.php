@@ -52,7 +52,7 @@ class User extends Authenticatable implements HasMedia
         'role_id',
         'formatted_date',
         'photo',
-        'rating'
+        
     ];
 
     public function registerMediaCollections(): void

@@ -22,11 +22,7 @@
         </x-menu-item>
     @endhasanyrole
 
-    @role('admin')
-        <x-menu-item title="{{ __('Reviews') }}" route="reviews">
-            <x-heroicon-o-thumb-up class="w-5 h-5" />
-        </x-menu-item>
-    @endrole
+   
 
     <x-menu-item routePath="order/*" title="{{ __('Orders') }}" route="orders">
             <x-heroicon-o-shopping-bag class="w-5 h-5" />
@@ -45,7 +41,7 @@
         @endhasanyrole
 
             {{-- manager package delivery options --}}
-            @role('manager')
+            @role('admin')
                 <x-menu-item title="{{ __('Pricing') }}" route="package.pricing">
                     <x-heroicon-o-currency-dollar class="w-5 h-5" />
                 </x-menu-item>

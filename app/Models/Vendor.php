@@ -22,7 +22,7 @@ class Vendor extends BaseModel
         'has_subscription' => 'boolean',
         'use_subscription' => 'boolean'
     ];
-    protected $appends = ['formatted_date', 'logo', 'feature_image', 'rating', 'can_rate', 'is_open', 'slots', 'is_package_vendor', 'has_subscription'];
+    protected $appends = ['formatted_date', 'logo', 'feature_image', 'can_rate', 'is_open', 'slots', 'is_package_vendor', 'has_subscription'];
     protected $with = ['vendor_type'];
 
     protected $fillable = [
@@ -85,7 +85,6 @@ class Vendor extends BaseModel
             return $value;
         } else {
             $type = $this->vendor_type;
-            // logger("Vendor", [$this->name, $type]);
             if ($type->slug ?? '' == "parcel") {
                 return 1;
             } else {
@@ -93,92 +92,6 @@ class Vendor extends BaseModel
             }
         }
     }
-
-
-    public function getIsOpenAttribute($value)
-    {
-        $value = $this->getRawOriginal('is_open');
-        // if ($this->id == 175) {
-        //     logger("openNow", [$this->openNow]);
-        // }
-        // if (!$value) {
-        //     return false;
-        // } else if (count($this->days) == 0) {
-        //     return true;
-        // } else if (count($this->openToday) > 0 && count($this->openNow) > 0) {
-        //     return true;
-        // } else {
-        //     return false;
-        // }
-    }
-
-    public function getCanRateAttribute()
-    {
-
-        if (empty(Auth::user())) {
-            return false;
-        }
-        //
-        $vendorReview = Review::where('user_id', Auth::id())->where('vendor_id', $this->id)->first();
-        return empty($vendorReview);
-    }
-
-    public function getSlotsAttribute()
-    {
-
-    //     $slots = [];
-    //     // $days = $this->days->pluck('name')->toArray();
-    //     // $daysTiming = $this->days;
-    //     if (!empty($days)) {
-    //         //max order schedule days
-    //         // $daysCount = setting('maxScheduledDay', 5) + 1;
-    //         // $maxScheduledTime = setting('maxScheduledTime', 2);
-    //         // $currentTime = now()->format('H:s:i');
-
-    //         //
-    //         for ($i = 0; $i < $daysCount; $i++) {
-    //             $date = Carbon::now()->addDays($i);
-    //             $dateDayName = $date->format('l');
-    //             try {
-    //                 if (in_array($dateDayName, $days)) {
-    //                     $schuldeInfo = [];
-    //                     $schuldeInfo["date"] = $date;
-    //                     //times
-    //                     $dayTimingIndex = array_search($dateDayName, $days);
-    //                     $dayTiming = $daysTiming[$dayTimingIndex];
-
-    //                     $hoursdIFF = $this->calculateDiffInHours($dayTiming->pivot->open, $dayTiming->pivot->close);
-    //                     $hoursdIFF -= $maxScheduledTime;
-    //                     if (!empty($hoursdIFF)) {
-    //                         $dateTiming = [];
-    //                         for ($j = 1; $j < $hoursdIFF; $j++) {
-    //                             $time = $this->carbonFromTime($dayTiming->pivot->open)->addHours($j)->format('H:s:i');
-
-    //                             //
-    //                             //remove time on today
-    //                             $minTime = $this->carbonFromTime($currentTime)->addHours($maxScheduledTime)->format('H:s:i');
-    //                             if ($i == 0 && $minTime <= $time) {
-    //                                 array_push($dateTiming, $time);
-    //                             } else if ($i > 0) {
-    //                                 array_push($dateTiming, $time);
-    //                             }
-    //                         }
-
-    //                         $schuldeInfo["times"] = $dateTiming;
-    //                         //
-    //                         array_push($slots, $schuldeInfo);
-    //                     }
-    //                 }
-    //             } catch (\Exception $ex) {
-    //                 logger("Error", [$ex]);
-    //             }
-    //         }
-    //     }
-
-    //     return $slots;
-    }
-
-
 
 
 
@@ -215,20 +128,4 @@ class Vendor extends BaseModel
     }
 
 
-    public function getHasSubscriptionAttribute()
-    {
-
-        if ($this->use_subscription) {
-            $subscriptionVendor = SubscriptionVendor::where('vendor_id', $this->id)
-                ->whereDate('expires_at', '>', Carbon::now())
-                ->where('status', 'successful')
-                ->first();
-            if (empty($subscriptionVendor)) {
-                return false;
-            } else {
-                return true;
-            }
-        }
-        return true;
-    }
 }

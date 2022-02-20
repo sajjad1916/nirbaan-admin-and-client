@@ -10,10 +10,6 @@ use App\Http\Controllers\API\TrackOrderController;
 use App\Http\Controllers\API\PackageOrderController;
 use App\Http\Controllers\API\PackageTypeController;
 use App\Http\Controllers\API\ChatNotificationController;
-use App\Http\Controllers\API\RatingController;
-// use App\Http\Controllers\API\WalletController;
-// use App\Http\Controllers\API\OrderPaymentCallbackController;
-use App\Http\Controllers\API\ReviewController;
 
 
 use Illuminate\Support\Facades\Route;
@@ -66,8 +62,6 @@ Route::post('password/reset/init', [AuthController::class, 'passwordReset']);
 
 
 
-
-// Route::get('vendor/reviews', [ReviewController::class,'index']);
 Route::apiResource('vendor/types', VendorTypeController::class);
 Route::get('coupons/{code}', [CouponController::class, 'show']);
 
@@ -84,7 +78,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('payment/methods', PaymentMethodController::class)->only('index');
     Route::apiResource('orders', OrderController::class)->only('index', 'store', 'show', 'update');
     Route::post('/track/order', [TrackOrderController::class,"track"]);
-    // Route::apiResource('rating', RatingController::class)->only('store');
     //package delivery
     Route::get('package/order/summary', [PackageOrderController::class, 'summary']);
     Route::get('/order/{status}',[OrderController::class,'OrderStatus']);
@@ -92,6 +85,4 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/orderss/code/{code}',[OrderController::class,'OrderCode']);
     //
     Route::post('chat/notification', [ChatNotificationController::class, 'send']);
-
-    
 });

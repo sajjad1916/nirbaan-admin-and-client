@@ -31,9 +31,5 @@ class VendorType extends BaseModel
         return $this->slug == "parcel";
     }
 
-    public function getIsServiceAttribute()
-    {
-        return $this->slug == "service";
-    }
     
 }

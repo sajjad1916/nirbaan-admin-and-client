@@ -22,7 +22,6 @@ class ReviewTable extends BaseTableComponent
             Column::make(__('Vendor'),'vendor.name')->searchable()->sortable(),
             Column::make(__('User'), 'user.name')->searchable()->sortable(),
             Column::make(__('Driver'), 'driver.name')->searchable()->sortable(),
-            Column::make(__('Rating'))->sortable(),
             Column::make(__('Review')),
             Column::make(__('Created At'), 'formatted_date'),
         ];

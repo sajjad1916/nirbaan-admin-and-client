@@ -153,7 +153,7 @@
                     <x-input title="Close Color" name="closeColor" type="color" class="h-10" />
                     <x-input title="Delivery Color" name="deliveryColor" type="color" class="h-10" />
                     <x-input title="Pickup Color" name="pickupColor" type="color" class="h-10" />
-                    <x-input title="Rating Color" name="ratingColor" type="color" class="h-10" />
+                   
                 </div>
                 <p class="mt-4 text-lg border-b">Order Status Colors</p>
                 <div class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
