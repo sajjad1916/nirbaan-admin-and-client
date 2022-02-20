@@ -13,7 +13,6 @@
             <x-input title="{{ __('Phone') }}" name="phone" placeholder="" />
             <x-input title="{{ __('Login Password') }}" name="password" type="password" placeholder="**********************" />
             <x-input title="{{ __('Commission') }}" name="commission" placeholder="" />
-            <!-- <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" /> -->
         </x-modal>
     </div>
 
@@ -26,8 +25,7 @@
             <x-input title="{{ __('Phone') }}" name="phone" placeholder="" />
             <x-input title="{{ __('Login Password') }}" name="password" type="password" placeholder="**********************" />
             <x-input title="{{ __('Commission') }}" name="commission" placeholder="" />
-            <!-- <x-input title="{{ __('Wallet Balance') }}" name="walletBalance" placeholder="" /> -->
-
+            
         </x-modal>
     </div>
 </div>

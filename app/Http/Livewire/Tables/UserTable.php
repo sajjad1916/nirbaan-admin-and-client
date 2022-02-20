@@ -5,7 +5,6 @@ namespace App\Http\Livewire\Tables;
 
 use App\Models\Order;
 use App\Models\User;
-// use App\Models\Wallet;
 use App\Models\WalletTransaction;
 use Illuminate\Support\Facades\Auth;
 use Kdion4891\LaravelLivewireTables\Column;
@@ -46,7 +45,7 @@ class UserTable extends BaseTableComponent
             Column::make(__('Name'),'name')->searchable()->sortable(),
             Column::make(__('Phone'),'phone')->searchable()->sortable(),
             Column::make(__('Creator'),'creator.name'),
-            // Column::make(__('Wallet'))->view('components.table.wallet'),
+            
             Column::make(__('Commission')."(%)", 'commission'),
             Column::make(__('Role'), 'role_name'),
             Column::make(__('Created At'), 'formatted_date'),
@@ -63,11 +62,9 @@ class UserTable extends BaseTableComponent
            
             \DB::beginTransaction();
             //
-            // $walletIds = Wallet::where('user_id', $this->selectedModel->id)->get()->pluck('id');
-
+           
             Order::whereIn('user_id', [$this->selectedModel->id])->delete();
-            // WalletTransaction::whereIn('wallet_id', $walletIds)->delete();
-            // Wallet::whereIn('id', $walletIds)->delete();
+          
             $this->selectedModel = $this->selectedModel->fresh();
             $this->selectedModel->forceDelete();
             \DB::commit();

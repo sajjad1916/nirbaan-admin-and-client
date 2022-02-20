@@ -25,9 +25,6 @@ class PaymentMethod extends BaseModel
         return $query->where('is_cash', 0);
     }
 
-    // public function scopeSub($query)
-    // {
-    //     return $query->where('is_cash', 0)->where('slug',"!=" , "wallet");
-    // }
+ 
 
 }

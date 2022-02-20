@@ -67,7 +67,7 @@ Route::post('password/reset/init', [AuthController::class, 'passwordReset']);
 
 
 
-Route::get('vendor/reviews', [ReviewController::class,'index']);
+// Route::get('vendor/reviews', [ReviewController::class,'index']);
 Route::apiResource('vendor/types', VendorTypeController::class);
 Route::get('coupons/{code}', [CouponController::class, 'show']);
 
@@ -75,7 +75,6 @@ Route::get('coupons/{code}', [CouponController::class, 'show']);
 Route::get('package/types', [PackageTypeController::class, 'index']);
 //
 Route::post('order/payment/callback', [OrderPaymentCallbackController::class, 'order'])->name('api.payment.callback');
-// Route::post('wallet/topup/callback', [OrderPaymentCallbackController::class, 'wallet'])->name('api.wallet.topup.callback');
 Route::get('/delivery',[OrderController::class,'deliveryZone']);
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
@@ -85,7 +84,7 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::apiResource('payment/methods', PaymentMethodController::class)->only('index');
     Route::apiResource('orders', OrderController::class)->only('index', 'store', 'show', 'update');
     Route::post('/track/order', [TrackOrderController::class,"track"]);
-    Route::apiResource('rating', RatingController::class)->only('store');
+    // Route::apiResource('rating', RatingController::class)->only('store');
     //package delivery
     Route::get('package/order/summary', [PackageOrderController::class, 'summary']);
     Route::get('/order/{status}',[OrderController::class,'OrderStatus']);
@@ -94,10 +93,5 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     //
     Route::post('chat/notification', [ChatNotificationController::class, 'send']);
 
-    //wallets
-    // Route::get('wallet/balance', [WalletController::class, 'index']);
-    // Route::post('wallet/topup', [WalletController::class, 'topup']);
-    // Route::get('wallet/transactions', [WalletController::class, 'transactions']);
-    // Route::post('wallet/transfer', [WalletController::class, 'transferBalance']);
     
 });

@@ -118,8 +118,7 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('operations/cron/job', CronJobLivewire::class)->name('configure.cron.job');
             Route::get('reviews', ReviewLivewire::class)->name('reviews');
             
-            // Route::get('wallet/transactions', WalletTransactionLivewire::class)->name('wallet.transactions');
-            //
+            
             Route::get('setting/currencies', CurrencyLivewire::class)->name('currencies');
             Route::get('setting/settings', SettingsLivewire::class)->name('settings');
             Route::get('setting/app/settings', AppSettingsLivewire::class)->name('settings.app');
@@ -157,9 +156,6 @@ Route::group(['middleware' => ['web']], function () {
     //Unauth routes
     Route::get('order/payment', OrderPaymentLivewire::class)->name('order.payment');
     Route::get('order/payment/callback', OrderPaymentCallbackLivewire::class)->name('payment.callback');
-    //Wallet
-    // Route::get('wallet/topup', WalletTopUpLivewire::class)->name('wallet.topup');
-    // Route::get('wallet/topup/callback', WalletTopUpCallbackLivewire::class)->name('wallet.topup.callback');
     
 });
 

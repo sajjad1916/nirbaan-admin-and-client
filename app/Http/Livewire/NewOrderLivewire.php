@@ -219,7 +219,7 @@ class NewOrderLivewire extends BaseLivewireComponent
 
         //cash payment
         if ($order->payment_method->slug == "cash") {
-            $order->payment_status = "successful";
+            $order->payment_status = "pending";
         }
         $order->note = $this->note;
         $order->created_at = Carbon::now();

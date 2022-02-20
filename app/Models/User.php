@@ -133,11 +133,6 @@ class User extends Authenticatable implements HasMedia
         return $this->hasMany('App\Models\Vendor', 'creator_id', 'id');
     }
 
-    // public function wallet()
-    // {
-    //     return $this->hasOne('App\Models\Wallet', 'user_id', 'id');
-    // }
-
 
 
     //NOTIFICATION
@@ -165,42 +160,5 @@ class User extends Authenticatable implements HasMedia
     }
 
 
-    //Wallet
-    // public function updateWallet($amount)
-    // {
-    //     $wallet = Wallet::firstOrCreate(
-    //         ['user_id' =>  $this->id],
-    //         ['balance' => 0.00]
-    //     );
-
-    //     //
-    //     $newAmount = $amount - $wallet->balance;
-    //     $wallet->balance = $amount;
-    //     $wallet->save();
-
-
-    //     //
-    //     $walletTransaction = new WalletTransaction();
-    //     $walletTransaction->amount = $newAmount >= 0 ? $newAmount : ($newAmount * -1);
-    //     $walletTransaction->wallet_id = $wallet->id;
-    //     $walletTransaction->is_credit = $newAmount >= 0 ? 1 : 0;
-    //     $walletTransaction->reason = $newAmount >= 0 ? "Topup" : "Debit";
-    //     $walletTransaction->ref = \Str::random(10);
-    //     $walletTransaction->status = "successful";
-    //     $walletTransaction->save();
-    //     return $wallet;
-    // }
-
-    // public function topupWallet($amount)
-    // {
-    //     $wallet = Wallet::firstOrCreate(
-    //         ['user_id' =>  $this->id],
-    //         ['balance' => 0.00]
-    //     );
-
-    //     //
-    //     $wallet->balance += $amount;
-    //     $wallet->save();
-    //     return $wallet;
-    // }
+    
 }

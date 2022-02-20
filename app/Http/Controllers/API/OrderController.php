@@ -9,8 +9,6 @@ use App\Models\User;
 use App\Models\Order;
 use App\Models\DeliveryZone;
 use App\Models\PaymentMethod;
-// use App\Models\Wallet;
-// use App\Models\WalletTransaction;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -131,27 +129,10 @@ class OrderController extends Controller
 
             if ($paymentMethod->is_cash) {
 
-                // //wallet check 
-                // if ($paymentMethod->slug == "wallet") {
-                //     //
-                //     $wallet = Wallet::mine()->first();
-                //     if (empty($wallet) || $wallet->balance < $request->total) {
-                //         throw new \Exception(__("Wallet Balance is less than order total amount"), 1);
-                //     } else {
-                //         //
-                //         $wallet->balance -= $request->total;
-                //         $wallet->save();
-
-                //         //RECORD WALLET TRANSACTION
-                //         $this->recordWalletDebit($wallet, $request->total);
-                //     }
-                // }
-
                 $order->payment_status = "pending";
                 $message = __("Order placed successfully. Relax while the vendor process your order");
             } else {
                 $message = __("Order placed successfully. Please follow the link to complete payment.");
-                // $paymentLink = route('order.payment', ["code" => $order->code]);
             }
 
             //
@@ -260,32 +241,7 @@ class OrderController extends Controller
                 "message" => "Order doesn't belong to you"
             ], 400);
         }
-        // //wallet system
-        // else if ($request->status == "shipment" && !empty($request->driver_id) && $enableDriverWallet) {
-
-        //     // //
-        //     // $driverWallet = $driver->wallet;
-        //     // if (empty($driverWallet)) {
-        //     //     $driverWallet = $driver->updateWallet(0);
-        //     // }
-
-        //     //allow if wallet has enough balance
-        //     if ($driverWalletRequired) {
-        //         if ($order->total > $driverWallet->balance) {
-        //             return response()->json([
-        //                 "message" => __("Order not assigned. Insufficient wallet balance")
-        //             ], 400);
-        //         }
-        //     } else if ($order->payment_method->slug == "cash" && $order->total > $driverWallet->balance) {
-        //         return response()->json([
-        //             "message" => __("Insufficient wallet balance, Wallet balance is less than order total amount")
-        //         ], 400);
-        //     } else if ($order->payment_method->slug != "cash" && $order->delivery_fee > $driverWallet->balance) {
-        //         return response()->json([
-        //             "message" => __("Insufficient wallet balance, Wallet balance is less than order delivery fee")
-        //         ], 400);
-        //     }
-        // }
+        // 
 
 
         //
@@ -348,14 +304,5 @@ class OrderController extends Controller
         }
     }
 
-    // public function recordWalletDebit($wallet, $amount)
-    // {
-    //     $walletTransaction = new WalletTransaction();
-    //     $walletTransaction->wallet_id = $wallet->id;
-    //     $walletTransaction->amount = $amount;
-    //     $walletTransaction->reason = __("New Order");
-    //     $walletTransaction->status = "successful";
-    //     $walletTransaction->is_credit = 0;
-    //     $walletTransaction->save();
-    // }
+   
 }

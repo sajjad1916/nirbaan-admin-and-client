@@ -59,8 +59,7 @@ class DriverLivewire extends BaseLivewireComponent
             $user->save();
             $user->assignRole('driver');
             
-            // //update wallet
-            // $user->updateWallet($this->walletBalance);
+        
 
             DB::commit();
 
@@ -85,7 +84,6 @@ class DriverLivewire extends BaseLivewireComponent
         $this->phone = $this->selectedModel->phone;
         $this->role = $this->selectedModel->role_id;
         $this->commission = $this->selectedModel->commission;
-        // $this->walletBalance = $this->selectedModel->wallet->balance ?? 0.00;
         $this->emit('showEditModal');
     }
 
@@ -115,8 +113,7 @@ class DriverLivewire extends BaseLivewireComponent
             }
             $user->save();
 
-            //update wallet
-            // $user->updateWallet($this->walletBalance);
+           
 
             DB::commit();
 

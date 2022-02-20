@@ -9,12 +9,8 @@ use Illuminate\Http\Request;
 
 class PackageTypeController extends Controller
 {
-
-    //
+   //
     public function index(Request $request){
         return PackageType::active()->get();
     }
-
-
-
 }
