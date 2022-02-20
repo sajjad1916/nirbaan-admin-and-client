@@ -115,8 +115,6 @@ class Order extends BaseModel
             return false;
         }
         //
-        $vendorReview = Review::where('user_id', Auth::id())->where('order_id', $this->id)->first();
-        return empty($vendorReview);
     }
 
     public function getCanRateDriverAttribute()
@@ -126,8 +124,6 @@ class Order extends BaseModel
             return false;
         }
         //
-        $driverReview = Review::where('user_id', Auth::id())->where('driver_id', $this->driver_id)->first();
-        return empty($driverReview);
     }
 
     
