@@ -128,4 +128,22 @@ class Vendor extends BaseModel
     }
 
 
+    public function getCanRateAttribute()
+    {
+
+        if (empty(Auth::user())) {
+            return false;
+        }
+        //
+    }
+
+    public function getCanRateDriverAttribute()
+    {
+
+        if (empty(Auth::user())) {
+            return false;
+        }
+        //
+    }
+
 }
