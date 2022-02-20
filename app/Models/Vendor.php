@@ -151,4 +151,6 @@ class Vendor extends BaseModel
         
     }
     public function getSlotsAttribute(){}
+
+    public function getHasSubscriptionAttribute(){}
 }
