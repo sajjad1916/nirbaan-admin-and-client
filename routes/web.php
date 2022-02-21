@@ -32,22 +32,13 @@ use App\Http\Livewire\Payment\OrderPaymentCallbackLivewire;
 use App\Http\Livewire\PackageTypeLivewire;
 use App\Http\Livewire\PackageTypePricingLivewire;
 
-
-
 use App\Http\Livewire\UserLivewire;
 use App\Http\Livewire\DriverLivewire;
-
-
 
 
 use App\Http\Livewire\NotificationLivewire;
 use App\Http\Livewire\SMSGatewayLivewire;
 use App\Http\Livewire\CronJobLivewire;
-
-
-// use App\Http\Livewire\Payment\WalletTopUpLivewire;
-// use App\Http\Livewire\Payment\WalletTopUpCallbackLivewire;
-
 
 use App\Http\Livewire\ProfileLivewire;
 use Illuminate\Support\Facades\Auth;
@@ -119,7 +110,6 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('reviews', ReviewLivewire::class)->name('reviews');
             
             
-            Route::get('setting/currencies', CurrencyLivewire::class)->name('currencies');
             Route::get('setting/settings', SettingsLivewire::class)->name('settings');
             Route::get('setting/app/settings', AppSettingsLivewire::class)->name('settings.app');
             Route::get('setting/website/settings', WebsiteSettingsLivewire::class)->name('settings.website');
@@ -137,14 +127,14 @@ Route::group(['middleware' => ['web']], function () {
             Route::get('setting/sms/gateways', SMSGatewayLivewire::class)->name('sms.settings');
              });
         
-        Route::group(['middleware' => ['role:admin|city-admin']], function () {
+        Route::group(['middleware' => ['role:admin']], function () {
             
             Route::get('users', UserLivewire::class)->name('users');
             
         });
 
         //manager routes
-        Route::group(['middleware' => ['role:manager']], function () {
+        Route::group(['middleware' => ['role:admin']], function () {
 
             Route::get('package/pricing', PackageTypePricingLivewire::class)->name('package.pricing');
             Route::get('drivers', DriverLivewire::class)->name('drivers');

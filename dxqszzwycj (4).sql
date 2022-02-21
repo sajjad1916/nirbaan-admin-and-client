@@ -68,24 +68,6 @@ INSERT INTO `coupon_user` (`id`, `coupon_id`, `user_id`, `order_id`) VALUES
 (19,	2,	116,	211);
 
 
-DROP TABLE IF EXISTS `currencies`;
-CREATE TABLE `currencies` (
-  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `code` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `symbol` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country_code` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `created_at` timestamp NULL DEFAULT NULL,
-  `updated_at` timestamp NULL DEFAULT NULL,
-  `deleted_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
-INSERT INTO `currencies` (`id`, `name`, `code`, `symbol`, `country_code`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1,	'United States Dollar',	'USD',	'$',	'US',	'2021-02-22 08:45:07',	'2021-02-22 08:49:23',	NULL),
-(5,	'Tk',	'BDT',	'৳',	'BD',	'2021-11-01 11:04:47',	'2021-11-01 11:04:47',	NULL);
-
-
 DROP TABLE IF EXISTS `deliveryZone`;
 CREATE TABLE `deliveryZone` (
   `id` int(10) NOT NULL AUTO_INCREMENT,
@@ -1600,9 +1582,8 @@ CREATE TABLE `settings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `settings` (`id`, `key`, `value`) VALUES
-(1,	'googleMapKey',	'AIzaSyDtCnYl08qSgsm-LuBJFcUGoaIpr87XBHw'),
+
 (2,	'currencyCode',	'BDT'),
-(3,	'currency',	'৳'),
 (4,	'currencyCountryCode',	'BD'),
 (11,	'appColorTheme.accentColor',	'#a9d6df'),
 (12,	'appColorTheme.primaryColor',	'#b2f0e0'),
@@ -2625,25 +2606,11 @@ CREATE TABLE `vendors` (
   `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `base_delivery_fee` double(15,2) NOT NULL DEFAULT '0.00',
   `delivery_fee` double(15,2) NOT NULL DEFAULT '0.00',
-  `delivery_range` double(8,2) NOT NULL DEFAULT '0.00',
-  `tax` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `phone` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `email` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `address` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `latitude` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `longitude` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `commission` double(8,2) NOT NULL DEFAULT '0.00',
-  `pickup` tinyint(1) NOT NULL DEFAULT '1',
-  `delivery` tinyint(1) NOT NULL DEFAULT '0',
-  `is_active` tinyint(1) NOT NULL DEFAULT '1',
-  `charge_per_km` tinyint(1) NOT NULL DEFAULT '0',
-  `is_open` tinyint(1) NOT NULL DEFAULT '1',
+   `is_active` tinyint(1) NOT NULL DEFAULT '1',
   `vendor_type_id` bigint(20) unsigned DEFAULT NULL,
-  `auto_assignment` tinyint(1) NOT NULL DEFAULT '1',
-  `auto_accept` tinyint(1) NOT NULL DEFAULT '0',
-  `allow_schedule_order` tinyint(1) NOT NULL DEFAULT '0',
-  `min_order` double(15,2) DEFAULT NULL,
-  `max_order` double(15,2) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
   `deleted_at` timestamp NULL DEFAULT NULL,
@@ -2655,8 +2622,8 @@ CREATE TABLE `vendors` (
   CONSTRAINT `vendors_vendor_type_id_foreign` FOREIGN KEY (`vendor_type_id`) REFERENCES `vendor_types` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `vendors` (`id`, `name`, `description`, `base_delivery_fee`, `delivery_fee`, `delivery_range`, `tax`, `phone`, `email`, `address`, `latitude`, `longitude`, `commission`, `pickup`, `delivery`, `is_active`, `charge_per_km`, `is_open`, `vendor_type_id`, `auto_assignment`, `auto_accept`, `allow_schedule_order`, `min_order`, `max_order`, `created_at`, `updated_at`, `deleted_at`, `creator_id`) VALUES
-(1,	'Nirbaan Express',	'Send parcel easy, fast & reliable way ',	0.00,	0.00,	0.00,	'0',	'01841816444',	'nirbaanexpress@gmail.com',	'Mohammadpur,Dhaka',	'23.8107492',	'90.3686989',	0.00,	1,	0,	1,	0,	1,	1,	0,	0,	0,	NULL,	NULL,	'2021-11-01 17:10:49',	'2021-11-21 00:47:27',	NULL,	NULL);
+INSERT INTO `vendors` (`id`, `name`, `description`, `base_delivery_fee`, `delivery_fee`,  `phone`, `email`, `address`,  `is_active`, `vendor_type_id`,  `created_at`, `updated_at`, `deleted_at`, `creator_id`) VALUES
+(1,	'Nirbaan Express',	'Send parcel easy, fast & reliable way ',	0.00,	0.00,	'01841816444',	'nirbaanexpress@gmail.com',	'Mohammadpur,Dhaka',1,	1,	'2021-11-01 17:10:49',	'2021-11-21 00:47:27',	NULL,	NULL);
 
 DROP TABLE IF EXISTS `vendor_types`;
 CREATE TABLE `vendor_types` (

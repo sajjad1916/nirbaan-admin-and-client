@@ -1,1 +1,1 @@
-{{ setting('currency', '$') }}{{ $model->delivery_fee ?? '' }}
+{{ $model->delivery_fee ?? '' }}

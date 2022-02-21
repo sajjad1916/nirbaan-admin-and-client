@@ -119,8 +119,6 @@ class SettingsLivewire extends BaseLivewireComponent
                 ]);
 
 
-
-
                 //
                 $serviceKeyPath = $this->photo->storeAs('vault', 'firebase_service.json');
 

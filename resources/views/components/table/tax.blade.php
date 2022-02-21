@@ -1,1 +1,1 @@
-{{ setting('currency', '$') }}{{ $model->tax ?? '' }}
+{{ $model->tax ?? '' }}

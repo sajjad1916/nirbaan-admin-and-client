@@ -40,9 +40,6 @@ class LoginLivewire extends BaseLivewireComponent
         if ($user->hasAnyRole('driver')) {
             $this->showErrorAlert("Unauthorized Access");
             return;
-        } else if (!$user->is_active) {
-            $this->showErrorAlert(__("Account is not active. Please contact us"));
-            return;
         }
 
         if (Hash::check($this->password, $user->password) && Auth::attempt(['email'=>$this->email, 'password' => $this->password], $this->remember)) {

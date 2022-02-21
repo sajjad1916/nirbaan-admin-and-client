@@ -8,14 +8,6 @@
             <div class="">
                 <div class='grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3'>
                     <x-input title="{{ __('App Name') }}" name="appName" />
-                    <div>
-                        <x-input title="Google Map Key" name="googleMapKey" />
-                        <p class="mt-1 text-xs">Insert google maps key <br />
-                            ( <a href="https://console.developers.google.com/apis/dashboard" target="_blank"
-                                class="underline text-primary-500">https://console.developers.google.com/apis/dashboard</a>
-                            )
-                        </p>
-                    </div>
                     {{-- What3words --}}
                     <div>
                         <x-input title="What3words Api Key" name="what3wordsApiKey" />

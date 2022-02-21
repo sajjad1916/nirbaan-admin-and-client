@@ -17,29 +17,13 @@ class Vendor extends BaseModel
     protected static $kilometers = true;
     protected $casts = [
         'id' => 'integer', 
-        'allow_schedule_order' => 'boolean', 
-        'has_sub_categories' => 'boolean', 
-        'has_subscription' => 'boolean',
-        'use_subscription' => 'boolean'
     ];
-    protected $appends = ['formatted_date', 'logo', 'feature_image', 'can_rate', 'is_open', 'slots', 'is_package_vendor', 'has_subscription'];
+    protected $appends = ['formatted_date','is_package_vendor',];
     protected $with = ['vendor_type'];
 
     protected $fillable = [
-        "id", "name", "description", "delivery_fee", "delivery_range", "tax", "phone", "email", "address", "latitude", "longitude", "commission", "pickup", "delivery", "is_active", "charge_per_km", "is_open", "vendor_type_id"
+        "id", "name", "description", "delivery_fee", "phone", "email", "address","is_open", "vendor_type_id"
     ];
-
-    public function registerMediaCollections(): void
-    {
-        $this
-            ->addMediaCollection('logo')
-            ->useFallbackUrl('' . url('') . '/images/default.png')
-            ->useFallbackPath(public_path('/images/default.png'));
-        $this
-            ->addMediaCollection('feature_image')
-            ->useFallbackUrl('' . url('') . '/images/default.png')
-            ->useFallbackPath(public_path('/images/default.png'));
-    }
 
     public function scopeIsPackageDelivery($query)
     {

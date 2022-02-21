@@ -24,8 +24,7 @@ class UserLivewire extends BaseLivewireComponent
     public $role;
     public $updateRole;
     public $commission;
-    // public $walletBalance;
-    //
+    
     public $vendorsIDs;
     public $roleName;
 
@@ -37,7 +36,6 @@ class UserLivewire extends BaseLivewireComponent
         "phone" => "required|unique:users",
         "password" => "sometimes|nullable|string",
         "commission" => "sometimes|nullable|numeric",
-        // "walletBalance" => "sometimes|nullable|numeric",
     ];
 
 

@@ -77,7 +77,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
             </p>
             </td>
             <td style="vertical-align:top;text-align:right;padding:0;table-layout:fixed;max-width:80px;width:80px">
-            <p style="display:inline-block;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;margin-top:0;margin-bottom:0">{{ setting('currency', '$') }} {{ $order->sub_total ?? '0.00' }}</p>
+            <p style="display:inline-block;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;margin-top:0;margin-bottom:0"> {{ $order->sub_total ?? '0.00' }}</p>
             </td>
             </tr>
         @else
@@ -95,7 +95,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
 </p>
 </td>
 <td style="vertical-align:top;text-align:right;padding:0;table-layout:fixed;max-width:80px;width:80px">
-<p style="display:inline-block;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;margin-top:0;margin-bottom:0">{{ setting('currency', '$') }} {{ $product->price }}</p>
+<p style="display:inline-block;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;margin-top:0;margin-bottom:0">{{ $product->price }}</p>
 </td>
 </tr>
 
@@ -117,7 +117,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
     <p style="margin-top:1px;margin-bottom:6px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">Subtotal</p>
     </td>
     <td style="vertical-align:middle;text-align:right;padding:0">
-    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> {{ setting('currency', '$') }} {{ $order->sub_total ?? '0.00' }}</p>
+    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> {{ $order->sub_total ?? '0.00' }}</p>
     </td>
     </tr>
 {{-- discount --}}
@@ -126,7 +126,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
     <p style="margin-top:1px;margin-bottom:6px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">Discount Amount</p>
     </td>
     <td style="vertical-align:middle;text-align:right;padding:0">
-    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> - {{ setting('currency', '$') }} {{ $order->discount ?? '0.00' }}</p>
+    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> {{ $order->discount ?? '0.00' }}</p>
     </td>
     </tr>
 {{-- delivery fee --}}
@@ -135,7 +135,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
 <p style="margin-top:1px;margin-bottom:6px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">Delivery fee</p>
 </td>
 <td style="vertical-align:middle;text-align:right;padding:0">
-<p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">+ {{ setting('currency', '$') }} {{ $order->delivery_fee ?? '0.00' }}</p>
+<p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> {{ $order->delivery_fee ?? '0.00' }}</p>
 </td>
 </tr>
 {{-- tax --}}
@@ -144,7 +144,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
     <p style="margin-top:1px;margin-bottom:6px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">Tax</p>
     </td>
     <td style="vertical-align:middle;text-align:right;padding:0">
-    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial"> + {{ setting('currency', '$') }} {{ $order->tax ?? '0.00' }}</p>
+    <p style="margin-top:1px;color:#2f313f;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial">  {{ $order->tax ?? '0.00' }}</p>
     </td>
     </tr>
 <tr>
@@ -157,7 +157,7 @@ body, td {font-size:13px} a:link, a:active {color:#1155CC; text-decoration:none}
 <p style="margin-top:6px;margin-bottom:6px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;color:#2f313f;font-size:20px;line-height:30px"><b>Total charged:</b></p>
 </td>
 <td style="vertical-align:middle;text-align:right;padding:0">
-<p style="margin-top:6px;margin-bottom:6px;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;color:#2f313f;white-space:nowrap"><b>{{ setting('currency', '$') }} {{ $order->total ?? '0.00' }}</b></p>
+<p style="margin-top:6px;margin-bottom:6px;font-size:16px;line-height:24px;font-family:&#39;Google Sans&#39;,Helvetica,Arial;color:#2f313f;white-space:nowrap"><b> {{ $order->total ?? '0.00' }}</b></p>
 </td>
 </tr>
 <tr>

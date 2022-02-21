@@ -97,10 +97,6 @@
         {{-- Settings --}}
         <x-group-menu-item routePath="setting/*" title="{{ __('Settings') }}" icon="heroicon-o-cog">
 
-            {{-- Currencies --}}
-            <x-menu-item title="{{ __('Currencies') }}" route="currencies">
-                <x-heroicon-o-currency-dollar class="w-5 h-5" />
-            </x-menu-item>
 
             {{-- Payment methods --}}
             <x-menu-item title="{{ __('Payment Methods') }}" route="payment.methods">

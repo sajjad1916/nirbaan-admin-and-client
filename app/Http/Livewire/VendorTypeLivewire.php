@@ -66,7 +66,7 @@ class VendorTypeLivewire extends BaseLivewireComponent
             $model->color = $this->color;
             $model->description = $this->description;
             $model->is_active = $this->isActive;
-            $model->slug = $this->slug ?? "food";
+            $model->slug = $this->slug ?? "parcel";
             $model->save();
 
             if ($this->photo) {

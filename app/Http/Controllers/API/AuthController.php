@@ -219,7 +219,7 @@ class AuthController extends Controller
             $user->pickupHub = $request->pickupHub ?? "";
             $user->actype = $request->actype;
             $user->acnumber = $acnumber;
-            $user->is_active = true;
+            
             $user->save();
 
             //refer system is enabled
@@ -398,9 +398,6 @@ class AuthController extends Controller
     public function authObject($user)
     {
 
-        if (!$user->is_active) {
-            throw new Exception(__("User Account is inactive"), 1);
-        }
         $user = User::find($user->id);
         $vendor = Vendor::find($user->vendor_id);
         $token = $user->createToken($user->name)->plainTextToken;

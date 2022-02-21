@@ -9,7 +9,6 @@ class AppSettingsLivewire extends BaseLivewireComponent
 {
 
     // App settings
-    public $googleMapKey;
     public $appName;
     public $enableOTP;
     public $otpGateway;
@@ -66,8 +65,7 @@ class AppSettingsLivewire extends BaseLivewireComponent
 
     public function mount()
     {
-        //
-        $this->googleMapKey = setting('googleMapKey', 'XXXXXXXXXXXX');
+        
         $this->appName = setting('appName', env('APP_NAME'));
         $this->enableOTP = (bool) setting('enableOTP');
         $this->otpGateway = setting('otpGateway');
@@ -136,7 +134,6 @@ class AppSettingsLivewire extends BaseLivewireComponent
     {
 
         $this->validate([
-            "googleMapKey" => "required|string",
             "appName" => "required|string",
             'accentColor' => ['sometimes','nullable', new Hex],
             'primaryColor' => ['sometimes','nullable', new Hex],
@@ -147,7 +144,6 @@ class AppSettingsLivewire extends BaseLivewireComponent
 
             $appSettings = [
                 'appName' =>  $this->appName,
-                'googleMapKey' =>  $this->googleMapKey,
                 'otpGateway' =>  $this->otpGateway,
                 'appCountryCode' =>  $this->appCountryCode,
                 'enableGoogleDistance' =>  $this->enableGoogleDistance,

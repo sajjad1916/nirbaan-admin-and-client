@@ -31,7 +31,7 @@ class CouponReportTable extends BaseDataTableComponent
         return [
             Column::make(__('ID'), 'id'),
             Column::make(__('Code'), 'coupon.code')->searchable()->sortable(),
-            Column::make(__('Discount') . "(" . setting('currency', '$') . ")", 'order.discount')->searchable()->sortable(),
+            Column::make(__('Discount') . 'order.discount')->searchable()->sortable(),
             Column::make(__('User'), 'user.name'),
             Column::make(__('Order'), 'order.code'),
             Column::make(__('Date'), 'order.created_at'),

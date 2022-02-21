@@ -1,1 +1,1 @@
-{{ setting('currency', '$') }}{{ $model->total }}
+{{ $model->total }}

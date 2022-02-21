@@ -19,7 +19,7 @@
                         {{__('Order Payment')}}
                     </div>
                     <div class="ml-auto text-right">
-                        <p class="text-2xl font-bold">{{ setting('currency') . '' . $selectedModel->total }}</p>
+                        <p class="text-2xl font-bold">{{ $selectedModel->total }}</p>
                         <p class="text-sm font-light">{{ $selectedModel->payment_method->name }}</p>
                     </div>
                 </div>

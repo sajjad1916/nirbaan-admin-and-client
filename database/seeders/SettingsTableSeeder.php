@@ -19,23 +19,12 @@ class SettingsTableSeeder extends Seeder
         \DB::table('settings')->delete();
         
         \DB::table('settings')->insert(array (
-            0 => 
-            array (
-                'id' => 1,
-                'key' => 'googleMapKey',
-                'value' => '',
-            ),
+          
             1 => 
             array (
                 'id' => 2,
                 'key' => 'currencyCode',
                 'value' => 'USD',
-            ),
-            2 => 
-            array (
-                'id' => 3,
-                'key' => 'currency',
-                'value' => '$',
             ),
             3 => 
             array (

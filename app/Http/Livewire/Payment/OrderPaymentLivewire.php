@@ -14,7 +14,6 @@ class OrderPaymentLivewire extends BaseLivewireComponent
     public $error;
     public $errorMessage;
     public $done = false;
-    public $currency;
     public $paymentStatus;
     protected $queryString = ['code'];
     //

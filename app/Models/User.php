@@ -67,7 +67,7 @@ class User extends Authenticatable implements HasMedia
     {
         return $query->where('is_active', 1);
     }
-
+    
     public function getPhotoAttribute()
     {
         return $this->getFirstMediaUrl('profile');

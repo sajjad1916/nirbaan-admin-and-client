@@ -96,12 +96,12 @@
             <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
                 <div>
                     <x-label title="{{ __('Base Delivery Price') }}" />
-                    {{ setting('currency') }}
+                
                     {{ $selectedModel->base_price ?? '' }}
                 </div>
                 <div>
                     <x-label title="{{ __('Multiple Stop Fee') }}" />
-                    {{ setting('currency') }}
+                    
                     {{ $selectedModel->multiple_stop_fee ?? '' }}
                 </div>
             </div>
@@ -116,7 +116,7 @@
                 </div>
                 <div>
                     <x-label title="{{ __('Distance Price') }}" />
-                    {{ setting('currency') }}
+                    
                     {{ $selectedModel->distance_price ?? '' }}
                 </div>
                 <div>

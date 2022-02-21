@@ -11,7 +11,6 @@ trait GoogleMapApiTrait
     public function getTotalDistanceFromGoogle($originLocation, $destinationLocations){
         
         $googleMapDistanceResposne = Http::get('https://maps.googleapis.com/maps/api/distancematrix/json',[
-            "key"=> setting("googleMapKey",""),
             "origins"=> $originLocation,
             "destinations"=> $destinationLocations,
         ]);

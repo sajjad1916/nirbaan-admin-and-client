@@ -107,7 +107,7 @@
                     <x-label title="{{ __('Total Collection Money') }}" />
                     <div class="w-6/12 md:w-4/12 lg:w-2/12">
                         <x-details.p
-                            text="{{ setting('currency', '$') }}{{ $selectedModel->productPrice ?? '' }}" /> 
+                            text="{{ $selectedModel->productPrice ?? '' }}" /> 
                     </div>
                 </div>
                 
@@ -115,7 +115,7 @@
                     <x-label title="{{ __('Delivery Fee') }}" />
                     <div class="w-6/12 md:w-4/12 lg:w-2/12">
                         <x-details.p
-                            text="+{{ setting('currency', '$') }}{{ $selectedModel->delivery_fee ?? '' }}" />
+                            text="{{ $selectedModel->delivery_fee ?? '' }}" />
                     </div>
                 </div>
               
@@ -123,7 +123,7 @@
                     <x-label title="{{ __('Total') }}" />
                     <div class="w-6/12 md:w-4/12 lg:w-2/12">
                         <x-details.p
-                            text="{{ setting('currency', '$') }}{{ $selectedModel->total ?? '' }}" />
+                            text="{{ $selectedModel->total ?? '' }}" />
                     </div>
                 </div>
             </div>
@@ -297,21 +297,21 @@
         <x-label title="{{ __('Total collection Money') }}" />
         <div class="w-6/12 md:w-4/12 lg:w-2/12">
             <x-details.p
-            text="+ {{ setting('currency', '$') }}{{ $newOrder->productPrice ?? '0' }}" />
+            text="{{ $newOrder->productPrice ?? '0' }}" />
         </div>
     </div>
     <div class="flex items-center justify-end space-x-20 border-b">
         <x-label title="{{ __('Delivery Fee') }}" />
         <div class="w-6/12 md:w-4/12 lg:w-2/12">
             <x-details.p
-            text="+ {{ setting('currency', '$') }}{{ $newOrder->delivery_fee ?? '0' }}" />
+            text="{{ $newOrder->delivery_fee ?? '0' }}" />
         </div>
     </div>
     <div class="flex items-center justify-end space-x-20 border-b">
         <x-label title="{{ __('Merchant Payable') }}" />
         <div class="w-6/12 md:w-4/12 lg:w-2/12">
             <x-details.p
-                text="{{ setting('currency', '$') }}{{ $newOrder->total ?? '' }}" />
+                text="{{ $newOrder->total ?? '' }}" />
         </div>
     </div>
         </x-modal-lg>

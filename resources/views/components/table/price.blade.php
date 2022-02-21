@@ -1,1 +1,1 @@
-{{ setting('currency', '$') }}{{ $model->price ?? $model[$column->attribute] ?? '' }}
+{{ $model->price ?? $model[$column->attribute] ?? '' }}
