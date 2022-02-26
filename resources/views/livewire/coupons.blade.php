@@ -27,18 +27,6 @@
 
             </div>
 
-      
-
-            
-            {{-- vendors --}}
-            <livewire:component.autocomplete-input title="{{ __('Vendors') }}" column="name"
-                model="Vendor" emitFunction="autocompleteVendorSelected" 
-                :clear="true" :queryClause="$vendorSearchClause"
-                onclearCalled="clearAutocompleteFieldsEvent" />
-
-            {{-- selected vendor --}}
-            <x-item-chips :items="$selectedVendors ?? []" onRemove="removeSelectedVendor" />
-
 
         </x-modal>
     </div>
@@ -63,16 +51,6 @@
                 <x-checkbox title="{{ __('Active') }}" name="isActive" :defer="false" />
 
             </div>
-
-             
-         {{-- vendors --}}
-         <livewire:component.autocomplete-input title="{{ __('Vendors') }}" column="name"
-             model="Vendor" emitFunction="autocompleteVendorSelected" 
-             :clear="true" :queryClause="$vendorSearchClause"
-             onclearCalled="clearAutocompleteFieldsEvent" />
-
-         {{-- selected vendor --}}
-         <x-item-chips :items="$selectedVendors ?? []" onRemove="removeSelectedVendor" />
 
 
         </x-modal>
@@ -103,28 +81,7 @@
                 <div>
                     <x-label title="{{ __('Status') }}" />
                     <x-table.active :model="$selectedModel" />
-                </div>
-
-
-
-            </div>
-            <div class="grid grid-cols-1 gap-4 pt-4 mt-4 border-t lg:grid-cols-2">
-
-               
-
-                <div>
-                    <x-label title="{{ __('Vendors') }}" />
-                    <div class="flex flex-wrap justify-start">
-                        @if( $selectedModel )
-                            @foreach($selectedModel->vendors as $vendor)
-                                <x-table.chip text="{{ $vendor->name }}" />
-                            @endforeach
-                        @endif
-                    </div>
-                </div>
-
-
-            </div>
+</div>
 
         </x-modal-lg>
     </div>

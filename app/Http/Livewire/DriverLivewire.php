@@ -19,16 +19,12 @@ class DriverLivewire extends BaseLivewireComponent
     public $phone;
     public $password;
     public $role;
-    public $commission;
-    // public $walletBalance;
 
     protected $rules = [
         "name" => "required|string",
         "email" => "required|email|unique:users",
         "phone" => "required|unique:users",
         "password" => "sometimes|nullable|string",
-        "commission" => "sometimes|nullable|numeric",
-        // "walletBalance" => "sometimes|nullable|numeric",
     ];
 
 
@@ -53,7 +49,6 @@ class DriverLivewire extends BaseLivewireComponent
             $user->name = $this->name;
             $user->email = $this->email;
             $user->phone = $this->phone;
-            $user->commission = $this->commission ?? 0.00;
             $user->password = Hash::make($this->password);
             $user->vendor_id = \Auth::user()->vendor_id;
             $user->save();
@@ -95,8 +90,7 @@ class DriverLivewire extends BaseLivewireComponent
                 "email" => "required|email|unique:users,email,".$this->selectedModel->id."",
                 "phone" => "required|unique:users,phone,".$this->selectedModel->id."",
                 "password" => "sometimes|nullable|string",
-                "commission" => "sometimes|nullable|numeric",
-                "walletBalance" => "sometimes|nullable|numeric",
+                
             ]
         );
 
@@ -107,7 +101,7 @@ class DriverLivewire extends BaseLivewireComponent
             $user->name = $this->name;
             $user->email = $this->email;
             $user->phone = $this->phone;
-            $user->commission = $this->commission ?? 0.00;
+       
             if( !empty($this->password) ){
                 $user->password = Hash::make($this->password);
             }

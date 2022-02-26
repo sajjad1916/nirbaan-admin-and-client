@@ -11,7 +11,7 @@ use App\Http\Livewire\Auth\ForgotPasswordLivewire;
 use App\Http\Livewire\DashboardLivewire;
 use App\Http\Livewire\VendorTypeLivewire;
 use App\Http\Livewire\VendorLivewire;
-use App\Http\Livewire\ReviewLivewire;
+// use App\Http\Livewire\ReviewLivewire;
 // use App\Http\Livewire\WalletTransactionLivewire;
 
 
@@ -107,7 +107,7 @@ Route::group(['middleware' => ['web']], function () {
 
             //
             Route::get('operations/cron/job', CronJobLivewire::class)->name('configure.cron.job');
-            Route::get('reviews', ReviewLivewire::class)->name('reviews');
+            // Route::get('reviews', ReviewLivewire::class)->name('reviews');
             
             
             Route::get('setting/settings', SettingsLivewire::class)->name('settings');

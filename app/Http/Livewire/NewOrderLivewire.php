@@ -32,17 +32,10 @@ class NewOrderLivewire extends BaseLivewireComponent
         'refreshView' => '$refresh',
         'select2Change' => 'select2Change',
         'vendorsChange' => 'vendorsChange',
-        'managersChange' => 'managersChange',
-        'paymentMethodsChange' => 'paymentMethodsChange',
         'vendorChange' => 'vendorChange',
         'changeFCMToken' => 'changeFCMToken',
         'logout' => 'logout',
-        'reviewPayment' => 'reviewPayment',
-        'customerChange' => 'customerChange',
-        'autocompleteUserSelected' => 'autocompleteUserSelected',
-        'photoSelected' => 'photoSelected',
         'autocompleteDriverSelected' => 'autocompleteDriverSelected',
-        'autocompleteVendorSelected' => 'autocompleteVendorSelected',
        
     ];
 

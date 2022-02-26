@@ -15,10 +15,7 @@ class Coupon extends BaseModel
         return Carbon::parse($this->expires_on)->format('d M Y');
     }
 
-    public function vendors()
-    {
-        return $this->belongsToMany('App\Models\Vendor');
-    }
+   
 
     public function getUseLeftAttribute()
     {

@@ -109,36 +109,4 @@ class OrderLivewire extends NewOrderLivewire
     }
 
 
-
-    //reivew payment
-    public function reviewPayment($id)
-    {
-        //
-        $this->selectedModel = $this->model::find($id);
-        $this->emit('showAssignModal');
-    }
-
-    public function approvePayment()
-    {
-        //
-        try {
-
-            DB::beginTransaction();
-            $this->selectedModel->payment_status = "successful";
-            $this->selectedModel->save();
-            //
-            $this->selectedModel->payment->status = "successful";
-            $this->selectedModel->payment->save();
-            DB::commit();
-
-            $this->dismissModal();
-            $this->reset();
-            $this->showSuccessAlert(__("Order")." ".__('updated successfully!'));
-            $this->emit('refreshTable');
-        } catch (Exception $error) {
-            DB::rollback();
-            $this->showErrorAlert( $error->getMessage() ?? __("Order")." ".__('updated failed!'));
-        }
-    }
-
 }

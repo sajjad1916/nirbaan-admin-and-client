@@ -35,8 +35,8 @@
                 </div>
                 <div class="lg:w-7/12 lg:mt-0 mt-8">
                     <div class="w-full h-full bg-red-200">
-                        <img src="https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148497067.jpg?w=1380" alt="apartment design" class="w-full sm:block hidden" />
-                        <img src="https://img.freepik.com/free-vector/delivery-service-with-masks-concept_23-2148497067.jpg?w=1380" alt="apartment design" class="sm:hidden block w-full" />
+                        <img src="{{url('/image/food.png')}}" alt="apartment design" class="w-full sm:block hidden" />
+                        <img src="{{url('/image/food.png')}}" alt="apartment design" class="sm:hidden block w-full" />
                     </div>
                   
                 </div>
@@ -47,7 +47,7 @@
         <div class="2xl:mx-auto 2xl:container  xl:px-20 md:px-6 px-4 py-12 my-20 ">
         <div class="lg:flex items-stretch justify-between">
         <div class="lg:w-2/5 w-full lg:mt-0 mt-6">
-                <img src="https://scontent-lga3-1.xx.fbcdn.net/v/t39.30808-6/271879125_145608047898275_2563491983585717060_n.jpg?_nc_cat=108&ccb=1-5&_nc_sid=730e14&_nc_eui2=AeHE5M-CaH6wDgVkBTV_lqx8Fg9eVnM7XykWD15WcztfKfTZV34PQalEJR7mijnHkLv7dMGodVII79ED-8DC5cGD&_nc_ohc=Gc67ETT33Q8AX_1EnC3&_nc_ht=scontent-lga3-1.xx&oh=00_AT_gp7_WqQ6soQkCdHsp30jVevW7srI23CoNX-GwSJ98hA&oe=620F26B4" alt="ongoing meeting" class="w-full obejct-fit object-center object-fill h-full" />
+                <img src="{{url('/image/content.jpg')}}" alt="ongoing meeting" class="w-full obejct-fit object-center object-fill h-full" />
             </div>
 
             <div class="xl:w-1/2 lg:w-7/12">
@@ -163,9 +163,7 @@
 
             <div class="flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16">
                 <div class="w-full lg:w-6/12">
-                    <h2 class="font-bold lg:text-4xl text-3xl lg:leading-9 leading-7 text-gray-800 text-left">Our Mission</h2>
-                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 w-full lg:w-10/12 xl:w-9/12 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.In the first place we have granted to God, and by this our present charter confirmed for us and our heirs forever that the English Church shall be free, and shall have her rights entire, and her liberties inviolate; and we will that it be thus observed; which is apparent from</p>
-                    <p class="font-normal text-base leading-6 text-gray-600 w-full lg:w-10/12 xl:w-9/12 mt-10 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.In the first place we have granted to God, and by this our present charter confirmed for us and our heirs forever that the English Church shall be free, and shall have her rights entire, and her liberties inviolate; and we will that it be thus observed; which is apparent from</p>
+                <img src="{{url('/image/team.jpg')}}" alt="ongoing meeting" class="w-full obejct-fit object-center object-fill h-full" />
                 </div>
                 <div class="w-full lg:w-6/12">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10">

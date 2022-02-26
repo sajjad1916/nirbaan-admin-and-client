@@ -2,7 +2,6 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Vendor;
 use App\Models\Order;
 use App\Models\User;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
@@ -19,23 +18,18 @@ class DashboardLivewire extends Component
         $user = User::find(\Auth::id());
         if ($user->hasRole('admin')) {
             $totalOrders = Number::n(Order::mine()->count())->round(3)->getSuffixNotation();
-            // $totalEarnings = Number::n(Order::mine()->sum('total'))->round(3)->getSuffixNotation();
         }
         else if($user->hasRole('client')){
             $totalOrders = Number::n(Order::where('user_id',$user->id)->count())->round(3)->getSuffixNotation();
         } 
        
-        $totalVendors = Number::n(Vendor::mine()->count())->round(3)->getSuffixNotation();
         $totalClients = Number::n(User::client()->count())->round(3)->getSuffixNotation();
 
         return view('livewire.dashboard', [
             "totalOrders" => $totalOrders,
-            "totalVendors" => $totalVendors,
             "totalClients" => $totalClients,
 
-            // "earningChart" => $this->earningChart(),
             "usersChart" => $this->usersChart(),
-            "vendorsChart" => $this->vendorsChart(),
             "ordersChart" => $this->ordersChart(),
         ]);
     }
@@ -64,28 +58,6 @@ class DashboardLivewire extends Component
         return $chart;
     }
 
-    public function vendorsChart()
-    {
-
-        //
-        $chart = (new LineChartModel())->setTitle(__('Vendors This Year'))->withoutLegend();
-
-        for ($loop = 0; $loop < 12; $loop++) {
-            $date = Carbon::now()->firstOfYear()->addMonths($loop);
-            $formattedDate = $date->format("M");
-            $data = Vendor::whereMonth("created_at", $date)->count();
-
-            //
-            $chart->addPoint(
-                $formattedDate,
-                $data,
-                $this->genColor(),
-            );
-        }
-
-
-        return $chart;
-    }
 
 
     public function ordersChart()

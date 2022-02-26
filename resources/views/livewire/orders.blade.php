@@ -171,43 +171,6 @@
         </x-modal>
     </div>
 
-
-    
-
-
-   
-
-
-    {{-- payment review moal --}}
-    <div x-data="{ open: @entangle('showAssign') }">
-        <x-modal confirmText="{{ __('Approve') }}" action="approvePayment">
-
-            <p class="text-xl font-semibold">{{ __('Order Payment Proof') }}</p>
-            <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <x-details.item title="{{ __('Transaction Code') }}"
-                    text="{{ $selectedModel->payment->ref ?? '' }}" />
-                <x-details.item title="{{ __('Status') }}"
-                    text="{{ $selectedModel->payment->status ?? '' }}" />
-                <x-details.item title="{{ __('Payment Method') }}"
-                    text="{{ $selectedModel->payment_method->name ?? '' }}" />
-                <div>
-                    <x-label title="{{ __('Transaction Photo') }}" />
-                    <a href="{{ $selectedModel->payment->photo ?? '' }}"
-                        target="_blank">
-                        <img src="{{ $selectedModel->payment->photo ?? '' }}"
-                            class="w-32 h-32" />
-                    </a>
-                </div>
-            </div>
-        </x-modal>
-    </div>
-
-
-
-
-
-
-
     {{-- new form --}}
     <div x-data="{ open: @entangle('showCreate') }">
         <x-modal-lg confirmText="{{ __('Next') }}" action="showOrderSummary" :clickAway="false">
@@ -236,15 +199,8 @@
             </div>
             
             <hr class="my-4" />
-
-            <!-- <div class="grid grid-cols-1 gap-4 md:grid-cols-2 m-2">
-                <x-input title="{{ __('Merchant Name') }}" name="merchantName" />
-                <x-input title="{{ __('Merchant Address') }}" name="merchantAddress" />
-            </div>
-            <hr class="my-4" /> -->
-
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">
-                <x-input title="{{ __('Product Weight') }}" name="weight" />
+                <x-input title="{{ __('Product Weight') }}" type="number" name="weight" />
                 <x-input title="{{ __('Total Collection Money') }}" name="productPrice" />
             </div>
             <div class="grid grid-cols-1 gap-4 md:grid-cols-2">

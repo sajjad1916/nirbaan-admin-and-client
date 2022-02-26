@@ -3,7 +3,6 @@
 namespace App\Http\Livewire;
 
 
-use App\Models\Vendor;
 use App\Models\User;
 use App\Models\Coupon;
 use Illuminate\Support\Facades\Auth;
@@ -24,7 +23,7 @@ class CouponLivewire extends BaseLivewireComponent
     public $expires_on;
     public $times;
     public $isActive = 1;
-    public $vendorsIDS;
+
 
     //
     public $customQuery;
@@ -36,21 +35,6 @@ class CouponLivewire extends BaseLivewireComponent
     ];
 
 
-
-    //
-    public function mount()
-    {
-        //
-        if (\Auth::user()->hasRole('manager')) {
-            
-            $this->vendorSearchClause = ['id' =>  \Auth::user()->vendor_id];
-        } else if (\Auth::user()->hasRole('city-admin')) {
-            $this->vendorSearchClause = ['creator_id' =>  \Auth::user()->id];
-        } else {
-            
-            $this->vendorSearchClause = [];
-        }
-    }
 
     public function render()
     {
@@ -81,7 +65,7 @@ class CouponLivewire extends BaseLivewireComponent
             $model->save();
 
             
-            $model->vendors()->attach($this->vendorsIDS);
+           
 
             DB::commit();
 
@@ -107,8 +91,7 @@ class CouponLivewire extends BaseLivewireComponent
         $this->times = $this->selectedModel->times;
         $this->isActive = $this->selectedModel->is_active;
 
-        $this->vendorIDS = $this->selectedModel->vendors()->pluck('id');
-        $this->selectedVendors = Vendor::whereIn('id', $this->vendorIDS)->get();
+  
 
         $this->emit('showEditModal');
     }
@@ -137,8 +120,7 @@ class CouponLivewire extends BaseLivewireComponent
             $model->is_active = $this->isActive;
             $model->save();
 
-            
-            $model->vendors()->sync($this->vendorIDS);
+       
 
             DB::commit();
 
@@ -152,9 +134,4 @@ class CouponLivewire extends BaseLivewireComponent
         }
     }
 
-
-    public function vendorsChange($data)
-    {
-        $this->vendorsIDs = $data;
-    }
 }

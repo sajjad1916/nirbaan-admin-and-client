@@ -13,10 +13,6 @@
 
                
                 @role('admin')
-                {{-- Total Vendors --}}
-                <x-dashboard-card bg="bg-red-100" title="{{ __('TOTAL VENDORS') }}" value="{{ $totalVendors }}">
-                    <x-heroicon-s-cake class="w-16 text-primary-600" />
-                </x-dashboard-card>
 
                 {{-- Users --}}
                 <x-dashboard-card bg="bg-yellow-100" title="{{ __('TOTAL Clients') }}" value="{{ $totalClients }}">
@@ -35,10 +31,6 @@
                     <livewire:livewire-line-chart :line-chart-model="$usersChart" />
                 </x-dashboard-chart>
 
-                {{-- Total Vendors --}}
-                <x-dashboard-chart>
-                    <livewire:livewire-line-chart :line-chart-model="$vendorsChart" />
-                </x-dashboard-chart>
                 @endrole
 
                 {{-- Orders --}}

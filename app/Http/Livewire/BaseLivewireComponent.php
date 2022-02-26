@@ -4,7 +4,6 @@ namespace App\Http\Livewire;
 
 use App\Models\UserToken;
 use App\Models\Vendor;
-use App\Traits\AutocompleteTrait;
 use Livewire\Component;
 use Livewire\WithPagination;
 use Livewire\WithFileUploads;
@@ -15,7 +14,6 @@ use Exception;
 class BaseLivewireComponent extends Component
 {
     use WithPagination, WithFileUploads;
-    use AutocompleteTrait;
 
     public $perPage = 6;
     public $showPassword = false;
@@ -37,22 +35,13 @@ class BaseLivewireComponent extends Component
         'removeModel' => 'removeModel',
         'initiateAssign' => 'initiateAssign',
         'initiatePayout' => 'initiatePayout',
-        'initiateEarningWalletTransfer' => 'initiateEarningWalletTransfer',
         'dismissModal' => 'dismissModal',
         'refreshView' => '$refresh',
         'select2Change' => 'select2Change',
         'vendorsChange' => 'vendorsChange',
-        'managersChange' => 'managersChange',
-        'paymentMethodsChange' => 'paymentMethodsChange',
         'vendorChange' => 'vendorChange',
-        'changeVendorTiming' => 'changeVendorTiming',
         'changeFCMToken' => 'changeFCMToken',
         'logout' => 'logout',
-        'reviewPayment' => 'reviewPayment',
-        'customerChange' => 'customerChange',
-        'autocompleteAddressSelected' => 'autocompleteAddressSelected',
-        'autocompleteVendorSelected' => 'autocompleteVendorSelected',
-        'autocompleteUserSelected' => 'autocompleteUserSelected',
         'photoSelected' => 'photoSelected',
         'refreshDataTable' => 'refreshDataTable',
     ];
@@ -196,12 +185,6 @@ class BaseLivewireComponent extends Component
 
         $this->secondPhotoInfo = $file;
     }
-
-
-
-
-
-
 
     //
     public function orderStatus()
