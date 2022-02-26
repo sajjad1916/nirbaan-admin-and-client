@@ -288,9 +288,6 @@ class NewOrderLivewire extends BaseLivewireComponent
 
         //delivery fee
         
-
-        
-        
         $order->delivery_fee = $this->deliveryFee;
         $order->total = intval($this->productPrice) - intval($this->deliveryFee);
         return $order;
