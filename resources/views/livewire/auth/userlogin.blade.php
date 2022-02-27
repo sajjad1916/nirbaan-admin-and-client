@@ -25,7 +25,7 @@
                 <div class="flex flex-col overflow-y-auto md:flex-row">
                     <div class="h-32 md:h-auto md:w-1/2">
                         <img aria-hidden="true" class="object-cover w-full h-full"
-                            src="{{ setting('loginImage', asset('images/login-office.jpeg')) }}" alt="Office" />
+                            src="{{ url('/images/nirbaanlogo.png') }}" alt="Office" />
                     </div>
                     {{-- form --}}
                     <div class="flex items-center justify-center p-6 sm:p-12 md:w-1/2">

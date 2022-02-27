@@ -26,7 +26,7 @@
             <div class="hidden h-screen md:block md:w-1/2">
              <div class="w-full h-full">
                 <img aria-hidden="true" class="object-cover w-full h-full"
-                    src="{{ setting('registerImage', asset('images/login-office.jpeg')) }}"
+                    src="{{ url('/images/nirbaanlogo.png') }}"
                     alt="Office" />
             </div> 
             </div>

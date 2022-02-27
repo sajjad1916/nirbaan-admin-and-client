@@ -35,8 +35,8 @@
                 </div>
                 <div class="lg:w-7/12 lg:mt-0 mt-8">
                     <div class="w-full h-full bg-red-200">
-                        <img src="{{url('/image/food.png')}}" alt="apartment design" class="w-full sm:block hidden" />
-                        <img src="{{url('/image/food.png')}}" alt="apartment design" class="sm:hidden block w-full" />
+                        <img src="{{url('/images/food.jpg')}}" alt="apartment design" class="w-full sm:block hidden" />
+                        <img src="{{url('/images/food.jpg')}}" alt="apartment design" class="sm:hidden block w-full" />
                     </div>
                   
                 </div>
@@ -66,7 +66,7 @@
                         </div>
                         <div class="flex items-start flex-col ml-6 pt-8">
                             <h2 class="text-base font-semibold leading-4 text-gray-800">On Time Delivery</h2>
-                            <p class=" text-base leading-6 mt-2 text-gray-600">Whether article spirits new her covered.</p>
+                            <p class=" text-base leading-6 mt-2 text-gray-600">We deliver product timely.</p>
                         </div>
                     </div>
                     <div class="flex items-center">
@@ -80,7 +80,7 @@
                         </div>
                         <div class="flex items-start flex-col ml-6 pt-8">
                             <h2 class="text-base font-semibold leading-4 text-gray-800">User Friendly</h2>
-                            <p class=" text-base leading-6 mt-2 text-gray-600">Whether article spirits new her covered.</p>
+                            <p class=" text-base leading-6 mt-2 text-gray-600">Our mobile application and website are too much user friendly.</p>
                         </div>
                     </div>
                     <div class="flex items-center">
@@ -94,7 +94,7 @@
                         </div>
                         <div class="flex items-start flex-col ml-6 pt-8">
                             <h2 class="text-base font-semibold leading-4 text-gray-800">Instant Payment</h2>
-                            <p class=" text-base leading-6 mt-2 text-gray-600">Whether article spirits new her covered.</p>
+                            <p class=" text-base leading-6 mt-2 text-gray-600">We clear payment within 12 hours.</p>
                         </div>
                     </div>
                     <div class="flex items-center">
@@ -110,7 +110,7 @@
                             <h2 class="text-base font-semibold leading-4 text-gray-800">
                                 Secure Payment
                             </h2>
-                            <p class=" text-base leading-6 mt-2 text-gray-600">Whether article spirits new her covered.</p>
+                            <p class=" text-base leading-6 mt-2 text-gray-600">Payment transection are secured.</p>
                         </div>
                     </div>
                 </div>
@@ -136,16 +136,16 @@
             </div>
             <div class="grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
                 <div>
-                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">Founded</p>
-                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">Food delivery</p>
+                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">we deliver home made food all over dhaka.</p>
                 </div>
                 <div>
-                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">50M montly enrichments</p>
-                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">Birthday Cake Delivery</p>
+                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">Birthday cake delivery all over dhaka.</p>
                 </div>
                 <div class="sm:block hidden">
-                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">400k User</p>
-                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">Parcel delivery </p>
+                    <p class="font-normal text-base leading-6 text-gray-600 mt-6 text-left">Nirbaan express deliver parcel in any place in bangladesh.</p>
                 </div>
             </div>
             <div class="sm:hidden block relative mt-8">
@@ -154,16 +154,10 @@
                 </div>
                 <hr class="z-10 absolute top-2/4 w-full bg-gray-200" />
             </div>
-            <div class="sm:hidden grid sm:grid-cols-3 grid-cols-2 sm:gap-8 gap-4">
-                <div>
-                    <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 mt-6 text-left">400k User</p>
-                    <p class="font-normal text-base leading-6 text-gray-600 mt-6">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-                </div>
-            </div>
 
             <div class="flex lg:flex-row flex-col md:gap-14 gap-16 justify-between lg:mt-20 mt-16">
                 <div class="w-full lg:w-6/12">
-                <img src="{{url('/image/team.jpg')}}" alt="ongoing meeting" class="w-full obejct-fit object-center object-fill h-full" />
+                <img src="{{url('/images/team.jpg')}}" alt="ongoing meeting" class="w-full obejct-fit object-center object-fill h-full" />
                 </div>
                 <div class="w-full lg:w-6/12">
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 lg:gap-12 gap-10">
@@ -174,7 +168,7 @@
                             </div>
                             <div class="">
                                 <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 text-left">Team</p>
-                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">A set of punctual delivery hero team is working in nirbaan express.</p>
                             </div>
                         </div>
 
@@ -184,8 +178,8 @@
                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg5.svg" alt="board card" />
                             </div>
                             <div class="">
-                                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 text-left">Board</p>
-                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 text-left">App</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">We have a user frinedly mobile application for both android and ios.</p>
                             </div>
                         </div>
 
@@ -195,8 +189,8 @@
                                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/about-us-3-svg6.svg" alt="press card" />
                             </div>
                             <div class="">
-                                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 text-left">Press</p>
-                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                                <p class="font-semibold lg:text-2xl text-xl lg:leading-6 leading-5 text-gray-800 text-left">Website</p>
+                                <p class="mt-2 font-normal text-base leading-6 text-gray-600 text-left">Nirbaan express has its own website.You can order in the website.</p>
                             </div>
                         </div>
                     </div>
