@@ -13,7 +13,7 @@ class LoginLivewire extends BaseLivewireComponent
     public $email;
     public $phone;
     public $password;
-    public $remember = false;
+    public $remember = true;
 
 
     public function login()
