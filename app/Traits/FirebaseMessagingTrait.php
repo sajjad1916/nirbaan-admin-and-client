@@ -2,7 +2,7 @@
 
 namespace App\Traits;
 
-use App\Models\CityVendor;
+
 use App\Models\Order;
 use App\Models\User;
 use App\Models\UserToken;
@@ -184,8 +184,6 @@ trait FirebaseMessagingTrait
             $this->sendFirebaseNotification($order->user_id, __("Order Update"), __("Order #") . $order->code . __(" has been ") . __($order->status) . "", $orderData);
         }
 
-
-        //send notifications to admin & city-admin
         //admin 
         if (setting("notifyAdmin", 0)) {
             //sending notification to admin accounts
@@ -194,18 +192,6 @@ trait FirebaseMessagingTrait
             //
             $this->sendFirebaseNotificationToTokens(
                 $adminTokens,
-                __("Order Notification"),
-                __("Order #") . $order->code . " " . __("with") . " " . $order->vendor->name . " " . __("is now:") . " " . $order->status,
-                [route('orders')]
-            );
-        }
-        //city-admin 
-        if (setting("notifyCityAdmin", 0) && !empty($order->vendor->creator_id)) {
-            //sending notification to city-admin accounts
-            $cityAdminTokens = UserToken::where('user_id', $order->vendor->creator_id)->pluck('token')->toArray();
-            //
-            $this->sendFirebaseNotificationToTokens(
-                $cityAdminTokens,
                 __("Order Notification"),
                 __("Order #") . $order->code . " " . __("with") . " " . $order->vendor->name . " " . __("is now:") . " " . $order->status,
                 [route('orders')]
@@ -234,23 +220,4 @@ trait FirebaseMessagingTrait
 
     }
 
-    //notificat chat parties
-    public function sendChatNotification(Order $order)
-    {
-        // //chat sample
-        // $this->sendFirebaseNotification($topic, $this->headings, $this->message, [
-        //     'is_chat' => "1",
-        //     'code' => "hfjh27hj",
-        //     'vendor' => json_encode([
-        //         "id" => 1,
-        //         "name" => "Meme Inc.",
-        //         "photo" => "https://img.icons8.com/cute-clipart/344/apple-app-store.png",
-        //     ]),
-        //     'user' => json_encode([
-        //         "id" => 6,
-        //         "name" => "Client User",
-        //         "photo" => "https://img.icons8.com/cute-clipart/344/apple-app-store.png",
-        //     ]),
-        // ]);
-    }
 }

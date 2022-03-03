@@ -58,11 +58,8 @@ class DashboardLivewire extends Component
         return $chart;
     }
 
-
-
     public function ordersChart()
     {
-
         //
         $chart = (new LineChartModel())->setTitle(__('Total Orders') . ' (' . Date("Y") . ')')->withoutLegend();
 
@@ -81,10 +78,6 @@ class DashboardLivewire extends Component
 
         return $chart;
     }
-
-
-
-
 
     public function genColor()
     {
